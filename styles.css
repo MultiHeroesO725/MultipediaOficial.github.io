@@ -59,4 +59,10 @@ h1 {
 .character-item p {
     margin: 5px 0 0;
     color: #f4f4f4;
+    font-weight: bold;
+}
+
+.character-item a {
+    text-decoration: none;
+    color: inherit;
 }
