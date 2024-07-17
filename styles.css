@@ -1,0 +1,28 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    text-align: center;
+}
+
+.character-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.character-item {
+    margin: 10px;
+    text-align: center;
+}
+
+.character-item img {
+    width: 240px;
+    height: 240px;
+    object-fit: cover;
+}
+
+.character-item p {
+    margin: 5px 0 0;
+}
