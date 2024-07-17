@@ -7,97 +7,22 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Multipedia</h1>
-    <div class="character-list">
-        <div class="character-item">
-            <a href="UMH/001.html">
-                <img src="UMH/i001.png" alt="">
-                <p>№001 Roberto A.K.</p>
-            </a>
-        </div>
-        <div class="character-item">
-            <a href="UMH/002.html">
-                <img src="UMH/i002.png" alt="">
-                <p>№002 Sr. Anderson</p>
-            </a>
-        </div>
-        <div class="character-item">
-            <a href="UMH/003.html">
-                <img src="UMH/i003.png" alt="">
-                <p>№003 Ms.Karle</p>
-            </a>
-        </div>
-        <div class="character-item">
-            <a href="UMH/004.html">
-                <img src="UMH/i004.png" alt="">
-                <p>№004 Narumi</p>
-            </a>
-        </div>
-        <div class="character-item">
-            <a href="UMH/005.html">
-                <img src="UMH/i005.png" alt="">
-                <p>№005 Mazaki</p>
-            </a>
-        </div>
-        <div class="character-item">
-            <a href="UMH/006.html">
-                <img src="UMH/i006.png" alt="">
-                <p>№006 Lynette</p>
-            </a>
-        </div>
-        <div class="character-item">
-            <a href="UMH/007.html">
-                <img src="UMH/i007.png" alt="">
-                <p>№007 Maestra</p>
-            </a>
-        </div>
-        <div class="character-item">
-            <a href="UMH/008.html">
-                <img src="UMH/i008.png" alt="">
-                <p>№008 Kanjou</p>
-            </a>
-        </div>
-        <div class="character-item">
-            <a href="UMH/009.html">
-                <img src="UMH/i009.png" alt="">
-                <p>№009 Seigi</p>
-            </a>
-        </div>
-        <div class="character-item">
-            <a href="UMH/010.html">
-                <img src="UMH/i010.png" alt="">
-                <p>№010 Muteki</p>
-            </a>
-        </div>
-        <div class="character-item">
-            <a href="UMH/011.html">
-                <img src="UMH/i011.png" alt="">
-                <p>№011 Chie</p>
-            </a>
-        </div>
-        <div class="character-item">
-            <a href="UMH/012.html">
-                <img src="UMH/i012.png" alt="">
-                <p>№012 Benji</p>
-            </a>
-        </div>
-        <div class="character-item">
-            <a href="UMH/013.html">
-                <img src="UMH/i013.png" alt="">
-                <p>№013 Samantha</p>
-            </a>
-        </div>
-        <div class="character-item">
-            <a href="UMH/014.html">
-                <img src="UMH/i014.png" alt="">
-                <p>№014 Steve</p>
-            </a>
-        </div>
-        <div class="character-item">
-            <a href="UMH/015.html">
-                <img src="UMH/i015.png" alt="">
-                <p>№015 Botsita</p>
-            </a>
+    <h1>Enciclopedia de Personajes</h1>
+    <div class="character-list-container">
+        <h2>Lista de Personajes</h2>
+        <div class="character-list">
+            <div class="character-item">
+                <a href="UMH/001.html">
+                    <img src="UMH/i001.png" alt="">
+                    <p>№001 Roberto A.K.</p>
+                </a>
+            </div>
+            <div class="character-item">
+                <a href="UMH/002.html">
+                    <img src="UMH/i002.png" alt="">
+                    <p>№002 Sr. Anderson</p>
+                </a>
+            </div>
         <!-- Agrega más personajes aquí -->
     </div>
     <audio id="background-music" loop>
@@ -105,7 +30,7 @@
         Tu navegador no soporta el elemento de audio.
     </audio>
     <script>
-        document.addEventListener('mousemove', function() {
+        document.addEventListener('click', function() {
             var audio = document.getElementById('background-music');
             if (audio.paused) {
                 audio.play();
