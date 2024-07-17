@@ -59,6 +59,17 @@ h1 {
     border-radius: 50%;
 }
 
+.character-item p {
+    margin: 5px 0 0;
+    color: #f4f4f4;
+    font-weight: bold;
+}
+
+.character-item a {
+    text-decoration: none;
+    color: inherit;
+}
+
 /* Estilo de la scrollbar */
 .character-section::-webkit-scrollbar {
     width: 12px;
