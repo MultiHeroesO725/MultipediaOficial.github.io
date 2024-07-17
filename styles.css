@@ -69,22 +69,3 @@ h1 {
     text-decoration: none;
     color: inherit;
 }
-
-/* Estilo de la scrollbar */
-.character-section::-webkit-scrollbar {
-    width: 12px;
-}
-
-.character-section::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.3);
-    border-radius: 10px;
-}
-
-.character-section::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 10px;
-}
-
-.character-section::-webkit-scrollbar-thumb:hover {
-    background: #555;
-}
