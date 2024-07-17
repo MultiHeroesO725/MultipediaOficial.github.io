@@ -70,3 +70,19 @@ h1 {
     text-decoration: none;
     color: inherit;
 }
+
+.character-item:hover {
+    animation: bounce 0.5s;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-15px);
+    }
+    60% {
+        transform: translateY(-10px);
+    }
+}
