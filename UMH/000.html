@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>N.°001 Roberto Anderson Karle</title>
+    <link rel="stylesheet" href="../styles.css">
+    <script>
+        // JavaScript para cambiar la imagen y la información del personaje
+        function cambiarForma(forma) {
+            const imagen = document.getElementById('imagen-personaje');
+            const info = document.getElementById('info-personaje');
+            
+            if (forma == 'n') {
+                imagen.src = '001.png';
+                info.innerHTML = 'Un joven valiente que perdió a sus padres en un acto violento. Posee el raro don de controlar todos los elementos, lo que lo convierte en un ser poderoso. Junto a su equipo, buscan venganza y justicia mientras protegen a los inocentes.';
+            } else if (forma == 's') {
+                imagen.src = '001a.png';
+                info.innerHTML = 'Un joven valiente que perdió a sus padres en un acto violento. Posee el raro don de controlar todos los elementos, lo que lo convierte en un ser poderoso. Junto a su equipo, buscan venganza y justicia mientras protegen a los inocentes.';
+            } else if (forma == 'u') {
+                imagen.src = '001b.png';
+                info.innerHTML = 'La primera persona en obtener esta rara forma elemental. Fue enviado a un planeta abandonado durante su proceso de obtención, esto debido al enorme poder destructivo que se desata la primera vez.';
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>N.°001 Roberto Anderson Karle</h1>
+    <img id="imagen-personaje" src="001.png" alt="">
+    <div class="character-info">
+        <p>
+            Elementos<p class="type-icon type-all">Todos</p>
+        </p>
+    </div>
+    <div class="forma-buttons">
+        <button onclick="cambiarForma('n')">Normal</button>
+        <button onclick="cambiarForma('s')">Super</button>
+        <button onclick="cambiarForma('u')">Ultra</button>
+    </div>
+    <div class="character-info" id="info-personaje">
+        <p>Un joven valiente que perdió a sus padres en un acto violento. Posee el raro don de controlar todos los elementos, lo que lo convierte en un ser poderoso. Junto a su equipo, buscan venganza y justicia mientras protegen a los inocentes.</p>
+    </div>
+    <div class="character-item">
+        <a href="002.html">Siguiente: N.°002 Sr. Anderson</a>
+    </div>
+    <div class="character-item">
+        <a href="../index.html">Regresar</a>
+</body>
+</html>
