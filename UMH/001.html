@@ -12,10 +12,10 @@
             const info = document.getElementById('info-personaje');
             
             if (forma == 'n') {
-                imagen.src = 'path/to/imagen_personaje1.jpg';
+                imagen.src = '001.png';
                 info.innerHTML = 'Información detallada sobre el Personaje 1.';
             } else if (forma == 's') {
-                imagen.src = 'path/to/imagen_personaje1_forma1.jpg';
+                imagen.src = '001a.png';
                 info.innerHTML = 'Información sobre la forma 1 del Personaje 1.';
             } else if (forma == 'u') {
                 imagen.src = 'path/to/imagen_personaje1_forma2.jpg';
@@ -26,7 +26,7 @@
 </head>
 <body>
     <h1>N.°001 Roberto Anderson Karle</h1>
-    <img src="001.png" alt="">
+    <img id="imagen-personaje" src="001.png" alt="">
     <div class="character-info">
         <p>
             Elementos<p class="type-icon type-all">Todos</p>
@@ -37,7 +37,7 @@
         <button onclick="cambiarForma('s')">Super</button>
         <button onclick="cambiarForma('u')">Ultra</button>
     </div>
-    <div class="character-info">
+    <div class="character-info" id="info-personaje">>
         <p>Un joven valiente que perdió a sus padres en un acto violento. Posee el raro don de controlar todos los elementos, lo que lo convierte en un ser poderoso. Junto a su equipo, buscan venganza y justicia mientras protegen a los inocentes.</p>
     </div>
     <div class="character-item">
