@@ -98,6 +98,25 @@ h1 {
     text-align: center;
 }
 
+.forma-buttons {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.forma-buttons button {
+    background-color: #444;
+    color: #f4f4f4;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.forma-buttons button:hover {
+    background-color: #666;
+}
+
 
 
 
