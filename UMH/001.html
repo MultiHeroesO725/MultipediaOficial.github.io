@@ -10,24 +10,19 @@
         function cambiarForma(forma) {
             const imagen = document.getElementById('imagen-personaje');
             const info = document.getElementById('info-personaje');
-            const tema = document.getElementById('tema-personaje');
             
             if (forma == 'n') {
                 imagen.src = '001.png';
                 info.innerHTML = 'Un joven valiente que perdió a sus padres en un acto violento. Posee el raro don de controlar todos los elementos, lo que lo convierte en un ser poderoso. Junto a su equipo, buscan venganza y justicia mientras protegen a los inocentes.';
-                tema.src = '001.mp3';
             } else if (forma == 'u') {
                 imagen.src = '001a.png';
                 info.innerHTML = 'La primera persona en obtener esta rara forma elemental. Fue enviado a un planeta abandonado durante su proceso de obtención, esto debido al enorme poder destructivo que se desata la primera vez.';
-                tema.src = '001.mp3';
             } else if (forma == 'a') {
                 imagen.src = '001b.png';
                 info.innerHTML = 'El segundo líder de la Escuela de Héroes. Ha entrenado grandes equipos, como las Leyendas Supremas y los Héroes Dimensionales... Aún se encuentra determinado a acabar con la corporación que le arrebató a sus padres.';
-                tema.src = '001.mp3';
             } else if (forma == 'au') {
                 imagen.src = '001c.png';
                 info.innerHTML = 'El segundo líder de la Escuela de Héroes. Ha entrenado grandes equipos, como las Leyendas Supremas y los Héroes Dimensionales... Aún se encuentra determinado a acabar con la corporación que le arrebató a sus padres.';
-                tema.src = '001.mp3';
             }
         }
     </script>
@@ -50,8 +45,10 @@
         <p>Un joven valiente que perdió a sus padres en un acto violento. Posee el raro don de controlar todos los elementos, lo que lo convierte en un ser poderoso. Junto a su equipo, buscan venganza y justicia mientras protegen a los inocentes.</p>
     </div>
     <div class="character-info">
-        <p>Tema de Batalla:</p>
-            <audio id="tema-personaje" controls loop>
+        <p>Temas de Batalla:</p>
+        <p> </p>
+        <p>1</p>
+            <audio controls loop>
                 <source src="001.mp3" type="audio/mpeg">
                 Tu navegador no soporta el elemento de audio.
     </div>
