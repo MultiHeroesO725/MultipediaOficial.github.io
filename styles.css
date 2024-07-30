@@ -98,15 +98,10 @@ h1 {
     text-align: center;
 }
 
-.character-info-img {
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 20px;
-    border-radius: 10px;
-    max-width: 640px;
-    margin: 20px auto;
-    color: #f4f4f4;
-    font-weight: bold;
-    align: center;
+.character-info img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
 }
 
 .forma-buttons {
