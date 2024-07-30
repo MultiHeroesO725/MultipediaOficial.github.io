@@ -191,6 +191,13 @@ h1 {
   margin-left: 0
 }
 
+.type-male {
+  background: #6890f0;
+  background-image: -webkit-linear-gradient(#6890f0, #386ceb);
+  background-image: linear-gradient(#6890f0, #386ceb);
+  border-color: #1753e3
+}
+
 .type-all {
   background: linear-gradient(#e8fff5, #d62d90);
   background-image: -webkit-linear-gradient(#e6faf9, #33ffd6);
