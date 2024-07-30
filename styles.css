@@ -97,19 +97,6 @@ h1 {
     text-align: center;
 }
 
-.character-inf {
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 20px;
-    border-radius: 10px;
-    max-width: 600px;
-    margin: 20px auto;
-    color: #f4f4f4;
-    font-weight: bold;
-    text-align: center;
-    display: flex;
-    gap: 20px;
-}
-
 .character-info img {
     width: 250px;
     height: 250px;
@@ -121,12 +108,6 @@ h1 {
         width: 500px;
         height: 500px;
     }
-}
-
-.info-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centra el contenido verticalmente */
 }
 
 .forma-buttons {
