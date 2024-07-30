@@ -103,6 +103,13 @@ h1 {
     object-fit: cover;
 }
 
+@media (min-width: 768px) {
+    .character-info img {
+        width: 500px;
+        height: 500px;
+    }
+}
+
 .forma-buttons {
     text-align: center;
     margin: 20px 0;
