@@ -218,10 +218,10 @@ h1 {
 }
 
 .type-none {
-  background: #7a7a57;
-  background-image: -webkit-linear-gradient(#7a7a57, #7a7a57);
-  background-image: linear-gradient(#7a7a57, #7a7a57);
-  border-color: #7a7a57
+  background: #8a8a59;
+  background-image: -webkit-linear-gradient(#a8a878, #8a8a59);
+  background-image: linear-gradient(#a8a878, #8a8a59);
+  border-color: #79794e
 }
 
 .type-all {
@@ -232,10 +232,10 @@ h1 {
 }
 
 .type-weapons {
-  background: #8a8a59;
-  background-image: -webkit-linear-gradient(#a8a878, #8a8a59);
-  background-image: linear-gradient(#a8a878, #8a8a59);
-  border-color: #79794e
+  background: #acac39;
+  background-image: -webkit-linear-gradient(#c7c757, #acac39);
+  background-image: linear-gradient(#c7c757, #acac39);
+  border-color: #959532
 }
 
 .type-fire {
@@ -294,11 +294,18 @@ h1 {
   border-color: #aa8623
 }
 
-.type-wind {
+.type-windold {
   background: #a890f0;
   background-image: -webkit-linear-gradient(#a890f0, #9180c4);
   background-image: linear-gradient(#a890f0, #9180c4);
   border-color: #7762b6
+}
+
+.type-wind {
+  background: #c3d6f7;
+  background-image: -webkit-linear-gradient(#c3d6f7, #9ab8db);
+  background-image: linear-gradient(#c3d6f7, #9ab8db);
+  border-color: #6e94c2
 }
 
 .type-magic {
