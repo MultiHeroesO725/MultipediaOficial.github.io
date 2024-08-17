@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>N.°003 La Maga Liz</title>
+    <link rel="stylesheet" href="../styles.css">
+    <script>
+        let isRef = false;
+        let currentForma = 'n';
+        
+        function cambiarForma(forma) {
+            currentForma = forma;
+            actualizarImagen();
+            const info = document.getElementById('info-personaje');
+            const code = document.getElementById('code-personaje');
+            const codeR = document.getElementById('code-ref');
+            
+            if (forma == 'n') {
+                info.innerHTML = '';
+                code.value = 'No Disponible';
+                codeR.value = 'No Disponible';
+            } else if (forma == 'f2') {
+                info.innerHTML = '';
+                code.value = 'No disponible';
+                codeR.value = 'No disponible';
+            }
+        }
+
+        function actualizarImagen() {
+            const imagen = document.getElementById('imagen-personaje');
+            if (currentForma === 'n') {
+                imagen.src = isRef ? '00er.png' : '003.png';
+            } else if (currentForma === 'f2') {
+                imagen.src = isRef ? '000ar.png' : '000a.png';
+            }
+        }
+
+        function alternarRef() {
+            isRef = !isRef;
+            actualizarImagen();
+        }
+
+        function copiarAlPortapapeles(id) {
+            const code = document.getElementById(id);
+            code.select();
+            code.setSelectionRange(0, 99999);
+            document.execCommand("copy");
+        }
+    </script>
+</head>
+<body>
+    <div class="character-info">
+        <h1>N.°003 La Maga Liz</h1>
+    </div>
+    <div class="character-info">
+        <img id="imagen-personaje" src="000.png" alt="">
+    </div>
+    <div class="forma-buttons">
+        <!--button onclick="cambiarForma('n')">Normal</button>
+        <button onclick="cambiarForma('f2')">Forma 2</button-->
+        <button onclick="alternarRef()">✨</button>
+    </div>
+    <div class="character-info">
+        <p>
+            Elemento<p class="type-icon type-magic">Magia</p>
+        </p>
+        <pre></pre>
+        <p>
+            Sexo<p class="type-icon type-female">Femenino</p>
+        </p>
+    </div>
+    <div class="forma-buttons">
+        <input type="text" id="code-personaje" value="No Disponible" readonly>
+        <button onclick="copiarAlPortapapeles('code-personaje')">Copiar OC</button>
+        <input type="text" id="code-ref" value="No Disponible" readonly>
+        <button onclick="copiarAlPortapapeles('code-ref')">Copiar OC ✨</button>
+    </div>
+    <div class="character-info" id="info-personaje">
+        <p></p>
+    </div>
+    <div class="character-info">
+        <p>Temas de Batalla:</p>
+        <pre></pre>
+        <p>Tema Único</p>
+            <audio controls loop>
+                <source src="003.mp3" type="audio/mpeg">
+                Tu navegador no soporta el elemento de audio.
+    </div>
+    <!--div class="character-item">
+        <a href="002.html">Anterior: N.°002 Miyazan</a>
+    </div>
+    <div class="character-item">
+        <a href="004.html">Siguiente: N.°004 Mysterius Man</a>
+    </div-->
+    <div class="character-item">
+        <a href="../index.html">Regresar</a>
+    </div>
+    <pre> </pre>
+</body>
+</html>
