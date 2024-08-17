@@ -17,7 +17,7 @@
             const codeR = document.getElementById('code-ref');
             
             if (forma == 'n') {
-                info.innerHTML = '???';
+                info.innerHTML = '';
                 code.value = 'No Disponible';
                 codeR.value = 'No Disponible';
             } else if (forma == 'f2') {
@@ -31,8 +31,8 @@
             const imagen = document.getElementById('imagen-personaje');
             if (currentForma === 'n') {
                 imagen.src = isRef ? '000r.png' : '000.png';
-            } else if (currentForma === 'u') {
-                imagen.src = isRef ? '000f2r.png' : '000f2.png';
+            } else if (currentForma === 'f2') {
+                imagen.src = isRef ? '000ar.png' : '000a.png';
             }
         }
 
@@ -63,11 +63,11 @@
     </div>
     <div class="character-info">
         <p>
-            Elementos<p class="type-icon type-all">???</p>
+            Elementos<p class="type-icon type-all"></p>
         </p>
-        <pre> </pre>
+        <pre></pre>
         <p>
-            Sexo<p class="type-icon type-male">???</p>
+            Sexo<p class="type-icon type-male"></p>
         </p>
     </div>
     <div class="forma-buttons">
@@ -77,11 +77,11 @@
         <button onclick="copiarAlPortapapeles('code-ref')">Copiar OC ✨</button>
     </div>
     <div class="character-info" id="info-personaje">
-        <p>???</p>
+        <p></p>
     </div>
     <div class="character-info">
         <p>Temas de Batalla:</p>
-        <pre> </pre>
+        <pre></pre>
         <p>Tema Único</p>
             <audio controls loop>
                 <source src="000.mp3" type="audio/mpeg">
