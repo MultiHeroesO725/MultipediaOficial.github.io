@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>N.°112 Taichy</title>
+    <link rel="stylesheet" href="../styles.css">
+    <script>
+        let isRef = false;
+        let currentForma = 'n';
+        
+        function cambiarForma(forma) {
+            currentForma = forma;
+            actualizarImagen();
+            const info = document.getElementById('info-personaje');
+            const code = document.getElementById('code-personaje');
+            const codeR = document.getElementById('code-ref');
+            
+            if (forma == 'n') {
+                info.innerHTML = '';
+                code.value = 'No Disponible';
+                codeR.value = 'No Disponible';
+            } else if (forma == 's') {
+                info.innerHTML = '';
+                code.value = 'No disponible';
+                codeR.value = 'No disponible';
+            }
+        }
+
+        function actualizarImagen() {
+            const imagen = document.getElementById('imagen-personaje');
+            if (currentForma === 'n') {
+                imagen.src = isRef ? '112r.png' : '112.png';
+            } else if (currentForma === 's') {
+                imagen.src = isRef ? '112ar.png' : '112a.png';
+            }
+        }
+
+        function alternarRef() {
+            isRef = !isRef;
+            actualizarImagen();
+        }
+
+        function copiarAlPortapapeles(id) {
+            const code = document.getElementById(id);
+            code.select();
+            code.setSelectionRange(0, 99999);
+            document.execCommand("copy");
+        }
+    </script>
+</head>
+<body>
+    <div class="character-info">
+        <h1>N.°112 Taichy</h1>
+    </div>
+    <div class="character-info">
+        <img id="imagen-personaje" src="112.png" alt="">
+    </div>
+    <div class="forma-buttons">
+        <!--button onclick="cambiarForma('n')">Normal</button>
+        <button onclick="cambiarForma('s')">Forma 2</button-->
+        <button onclick="alternarRef()">✨</button>
+    </div>
+    <div class="character-info">
+        <p>
+            Elementos<p class="type-icon type-electric">Electricidad</p><p class="type-icon type-all">Luz</p>
+        </p>
+        <pre></pre>
+        <p>
+            Sexo<p class="type-icon type-male">Masculino</p>
+        </p>
+    </div>
+    <div class="forma-buttons">
+        <input type="text" id="code-personaje" value="No Disponible" readonly>
+        <button onclick="copiarAlPortapapeles('code-personaje')">Copiar OC</button>
+        <input type="text" id="code-ref" value="No Disponible" readonly>
+        <button onclick="copiarAlPortapapeles('code-ref')">Copiar OC ✨</button>
+    </div>
+    <div class="character-info" id="info-personaje">
+        <p></p>
+    </div>
+    <div class="character-info">
+        <p>Temas de Batalla:</p>
+        <pre></pre>
+        <p>Tema Único</p>
+            <audio controls loop>
+                <source src="112_4_5.mp3" type="audio/mpeg">
+                Tu navegador no soporta el elemento de audio.
+    </div>
+    <!--div class="character-item">
+        <a href="111.html">Anterior: N.°111</a>
+    </div>
+    <div class="character-item">
+        <a href="113.html">Siguiente: N.°113 Saya</a>
+    </div-->
+    <div class="character-item">
+        <a href="../index.html">Regresar</a>
+    </div>
+    <pre> </pre>
+</body>
+</html>
