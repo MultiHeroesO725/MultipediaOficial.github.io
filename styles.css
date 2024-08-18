@@ -336,6 +336,13 @@ h1 {
   border-color: #210152
 }
 
+.type-mind {
+  background: #f85888;
+  background-image: -webkit-linear-gradient(#f85888, #f61c5d);
+  background-image: linear-gradient(#f85888, #f61c5d);
+  border-color: #520143
+}
+
 .type-bug {
   background: #a8b820;
   background-image: -webkit-linear-gradient(#a8b820, #8d9a1b);
