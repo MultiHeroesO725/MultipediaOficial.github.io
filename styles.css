@@ -332,8 +332,8 @@ h1 {
 .type-magic {
   background: #f85888;
   background-image: -webkit-linear-gradient(#f85888, #f61c5d);
-  background-image: linear-gradient(#f85888, #f61c5d);
-  border-color: #d60945
+  background-image: linear-gradient(#5d22b5, #420c94);
+  border-color: #210152
 }
 
 .type-bug {
