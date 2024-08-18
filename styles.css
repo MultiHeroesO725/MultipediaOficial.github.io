@@ -233,9 +233,16 @@ h1 {
 
 .type-light {
   background: #ffffff;
-  background-image: -webkit-linear-gradient(#ffe75e, #ffffff);
-  background-image: linear-gradient(#ffffff, #ffffff);
+  background-image: -webkit-linear-gradient(#ffffff, #ffffff);
+  background-image: linear-gradient(#ffe75e, #ffffff);
   border-color: #d4a73f
+}
+
+.type-dark {
+  background: #ffffff;
+  background-image: -webkit-linear-gradient(#ffffff, #ffffff);
+  background-image: linear-gradient(#3f0882, #705848);
+  border-color: #000000
 }
 
 .type-weapons {
@@ -357,7 +364,7 @@ h1 {
   border-color: #7a7aa7
 }
 
-.type-dark {
+.type-darkold {
   background: #705848;
   background-image: -webkit-linear-gradient(#705848, #513f34);
   background-image: linear-gradient(#705848, #513f34);
