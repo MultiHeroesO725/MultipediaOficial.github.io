@@ -252,6 +252,13 @@ h1 {
   border-color: #ffffff
 }
 
+.type-time {
+  background: #ffffff;
+  background-image: -webkit-linear-gradient(#ffffff, #ffffff);
+  background-image: linear-gradient(#2ac20c, #ffffff);
+  border-color: #137300
+}
+
 .type-weapons {
   background: #acac39;
   background-image: -webkit-linear-gradient(#c7c757, #acac39);
