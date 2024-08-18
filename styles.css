@@ -231,6 +231,13 @@ h1 {
   border-color: #207572
 }
 
+.type-light {
+  background: #ffffff;
+  background-image: -webkit-linear-gradient(#ffe75e, #ffffff);
+  background-image: linear-gradient(#ffffff, #ffffff);
+  border-color: #d4a73f
+}
+
 .type-weapons {
   background: #acac39;
   background-image: -webkit-linear-gradient(#c7c757, #acac39);
