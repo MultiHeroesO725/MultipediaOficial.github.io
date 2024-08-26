@@ -224,6 +224,41 @@ h1 {
   border-color: #79794e
 }
 
+.type-creation {
+  background: #ffffff;
+  background-image: -webkit-linear-gradient(#ffffff, #ffffff);
+  background-image: linear-gradient(#ff8000, #ffffff);
+  border-color: #ffffff
+}
+
+.type-emotions {
+  background: #ffffff;
+  background-image: -webkit-linear-gradient(#ffffff, #ffffff);
+  background-image: linear-gradient(#ff2ee7, #ffffff);
+  border-color: #ffffff
+}
+
+.type-justice {
+  background: #ffffff;
+  background-image: -webkit-linear-gradient(#ffffff, #ffffff);
+  background-image: linear-gradient(#00f2ff, #ffffff);
+  border-color: #ffffff
+}
+
+.type-resistance {
+  background: #ffffff;
+  background-image: -webkit-linear-gradient(#ffffff, #ffffff);
+  background-image: linear-gradient(#cc1414, #ffffff);
+  border-color: #ffffff
+}
+
+.type-knowledge {
+  background: #ffffff;
+  background-image: -webkit-linear-gradient(#ffffff, #ffffff);
+  background-image: linear-gradient(#e0e036, #ffffff);
+  border-color: #ffffff
+}
+
 .type-all {
   background: linear-gradient(#e8fff5, #d62d90);
   background-image: -webkit-linear-gradient(#e6faf9, #33ffd6);
