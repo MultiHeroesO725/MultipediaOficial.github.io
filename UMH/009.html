@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>N.°009 Seigi</title>
+    <link rel="stylesheet" href="../styles.css">
+    <script>
+        let isRef = false;
+        let currentForma = 'n';
+        
+        function cambiarForma(forma) {
+            currentForma = forma;
+            actualizarImagen();
+            const info = document.getElementById('info-personaje');
+            const code = document.getElementById('code-personaje');
+            const codeR = document.getElementById('code-ref');
+            
+            if (forma == 'n') {
+                info.innerHTML = 'Integrante de las Leyendas Supremas y hermano gemelo de Muteki. Posee el Elemento Supremo "Justicia", con un poder comparable al de una deidad, o incluso superior.';
+                code.value = 'No Disponible';
+                codeR.value = 'No Disponible';
+            } else if (forma == 'b') {
+                info.innerHTML = 'Simplemente, un pequeño del Jardín de Niños de TruntuLand...';
+                code.value = 'No Disponible';
+                codeR.value = 'No Disponible';
+            }
+        }
+
+        function actualizarImagen() {
+            const imagen = document.getElementById('imagen-personaje');
+            if (currentForma === 'n') {
+                imagen.src = isRef ? '009r.png' : '009.png';
+            } else if (currentForma === 'b') {
+                imagen.src = isRef ? '009ar.png' : '009a.png';
+            }
+        }
+
+        function alternarRef() {
+            isRef = !isRef;
+            actualizarImagen();
+        }
+
+        function copiarAlPortapapeles(id) {
+            const code = document.getElementById(id);
+            code.select();
+            code.setSelectionRange(0, 99999);
+            document.execCommand("copy");
+        }
+    </script>
+</head>
+<body>
+    <div class="character-info">
+        <h1>N.°009 Seigi</h1>
+    </div>
+    <div class="character-info">
+        <img id="imagen-personaje" src="009.png" alt="">
+    </div>
+    <div class="forma-buttons">
+        <button onclick="cambiarForma('n')">Normal</button>
+        <button onclick="cambiarForma('b')">Bebé</button>
+        <button onclick="alternarRef()">✨</button>
+    </div>
+    <div class="character-info">
+        <p>
+            Elemento<p class="type-icon type-justice">Justicia</p>
+        </p>
+        <pre></pre>
+        <p>
+            Sexo<p class="type-icon type-male">Masculino</p>
+        </p>
+    </div>
+    <div class="forma-buttons">
+        <input type="text" id="code-personaje" value="No Disponible" readonly>
+        <button onclick="copiarAlPortapapeles('code-personaje')">Copiar OC</button>
+        <input type="text" id="code-ref" value="No Disponible" readonly>
+        <button onclick="copiarAlPortapapeles('code-ref')">Copiar OC ✨</button>
+    </div>
+    <div class="character-info" id="info-personaje">
+        <p>Integrante de las Leyendas Supremas y hermano gemelo de Muteki. Posee el Elemento Supremo "Justicia", con un poder comparable al de una deidad, o incluso superior.</p>
+    </div>
+    <div class="character-info">
+        <p>Temas de Batalla:</p>
+        <pre></pre>
+        <p>Leyendas Elementales</p>
+            <audio controls loop>
+                <source src="008_9_10_11.mp3" type="audio/mpeg">
+                Tu navegador no soporta el elemento de audio.
+    </div>
+    <div class="character-item">
+        <a href="000.html">Anterior: N.°008 Kanjou</a>
+    </div>
+    <div class="character-item">
+        <a href="000.html">Siguiente: N.°010 Muteki</a>
+    </div>
+    <div class="character-item">
+        <a href="../index.html">Regresar</a>
+    </div>
+    <pre> </pre>
+</body>
+</html>
