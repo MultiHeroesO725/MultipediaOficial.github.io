@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplicación en Mantenimiento</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div style="text-align: center; padding: 50px;">
+        <h1>Estamos en Mantenimiento</h1>
+        <p>Lo sentimos, esta app está en mantenimiento en este momento.</p>
+        
+        <h2>Introduce la contraseña de testing para salir.</h2>
+        <input type="password" id="maintenancePassword" placeholder="Contraseña">
+        <button onclick="exitMaintenance()">Salir del Mantenimiento</button>
+
+        <script>
+            function exitMaintenance() {
+                const password = document.getElementById('maintenancePassword').value;
+                
+                // Aquí puedes establecer la contraseña que desactiva el mantenimiento
+                const correctPassword = 'SacneEsFurro';
+                
+                if (password === correctPassword) {
+                    // Desactivar el modo de mantenimiento y redirigir a la página principal
+                    localStorage.setItem('maintenanceMode', 'false');
+                    window.location.href = './index.html';  // Redirige a la página principal
+                } else {
+                    alert('Contraseña incorrecta');
+                }
+            }
+        </script>
+    </div>
+</body>
+</html>
