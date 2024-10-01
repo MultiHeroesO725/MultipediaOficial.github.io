@@ -11,6 +11,21 @@
         <h1>Universo MultiHéroes (U-180423)</h1>
     </div>
 
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const characterList = document.getElementById('character-section');
+
+        const savedScrollPosition = localStorage.getItem('scrollPosition');
+        if (savedScrollPosition !== null) {
+            characterList.scrollTop = savedScrollPosition;
+        }
+
+        window.addEventListener('beforeunload', () => {
+            localStorage.setItem('scrollPosition', characterList.scrollTop);
+        });
+    });
+    </script>
+
     <div class="character-section">
         <!--h2>Universo MultiHéroes</h2-->
         <div class="character-item">
