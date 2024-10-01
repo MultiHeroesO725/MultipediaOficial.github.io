@@ -51,15 +51,14 @@
             z-index: 1;
         }
 
-        /* Estilos del modal */
         .modal {
-            display: none; /* Inicialmente oculto */
+            display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.7); /* Oscurecer el fondo */
+            background-color: rgba(0, 0, 0, 0.7);
             justify-content: center;
             align-items: center;
             z-index: 10;
@@ -76,7 +75,6 @@
             position: relative;
         }
 
-        /* Botón para cerrar el modal */
         .close {
             position: absolute;
             top: 10px;
@@ -87,7 +85,6 @@
             cursor: pointer;
         }
 
-        /* Evita la interacción con el contenido detrás del modal */
         body.modal-open {
             overflow: hidden;
         }
@@ -99,37 +96,38 @@
         <p id="version-info" style="cursor: pointer;">V.1.01</p>
     </div>
 
-    <!-- Modal para mostrar la lista de cambios -->
+    <!-- Lista de cambios -->
     <div class="modal" id="changelog-modal">
         <div class="modal-content">
             <span class="close" id="close-modal">&times;</span>
-            <h2>Lista de cambios</h2>
+            <h2>V.1.01 - Lista de cambios</h2>
             <ul>
-                <li>V.1.01 - Corrección de errores menores.</li>
-                <li>V.1.00 - Lanzamiento inicial de la Multipedia Oficial.</li>
+                <li>Se añadió la selección de universos.</li>
+                <li>Universo Narrativo añadido.</li>
+                <li>¡Se agregaron ?? nuevos personajes!</li>
+                <p>(UMH): Kanjou, Seigi, Muteki, Chie</p>
+                <p>(GMU): La Wawa, Miyazan</p>
+                <p>(EB): Natsuki</p>
+                <p>(VN): MC, Hisao Nakai</p>
             </ul>
         </div>
     </div>
 
     <script>
-        // Obtener elementos del DOM
         const versionInfo = document.getElementById('version-info');
         const modal = document.getElementById('changelog-modal');
         const closeModal = document.getElementById('close-modal');
 
-        // Abrir el modal al hacer clic en el número de versión
         versionInfo.addEventListener('click', () => {
-            modal.style.display = 'flex'; // Mostrar el modal
-            document.body.classList.add('modal-open'); // Evitar scroll e interacción con el fondo
+            modal.style.display = 'flex';
+            document.body.classList.add('modal-open');
         });
 
-        // Cerrar el modal al hacer clic en la "x"
         closeModal.addEventListener('click', () => {
-            modal.style.display = 'none'; // Ocultar el modal
-            document.body.classList.remove('modal-open'); // Permitir interacción con el fondo
+            modal.style.display = 'none';
+            document.body.classList.remove('modal-open');
         });
 
-        // Cerrar el modal si se hace clic fuera del contenido del modal
         window.addEventListener('click', (event) => {
             if (event.target === modal) {
                 modal.style.display = 'none';
@@ -138,6 +136,9 @@
         });
     </script>
 
+
+    <!-- Universos -->
+    
     <div class="universe-selection">
         <!-- MultiHéroes -->
         <div class="universe-item">
