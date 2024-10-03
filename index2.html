@@ -230,14 +230,14 @@
         </div>
 
         <div class="reward-message" id="reward-message">
-            ¡Felicidades! Has desbloqueado al personaje mítico <strong>Kurieta</strong> en la siguiente versión.
+            ¡Felicidades! Se ha desbloqueado al personaje mítico <strong>Kurieta</strong> en la siguiente versión.
         </div>
     </div>
 
     <script>
         // Variables globales
         let globalScore = 0;
-        const goal = 49000000;
+        const goal = 48000000;
         const deadline = new Date('2024-10-10'); // Fecha límite
 
         // Elementos del DOM
@@ -262,7 +262,7 @@
         // Evento al hacer clic en el botón para sumar puntos
         clickBtn.addEventListener('click', () => {
             if (new Date() <= deadline) {
-                globalScore += Math.floor(Math.random() * 1000) + 100; // Sumar entre 100 y 1000 puntos por clic
+                globalScore += 1; // Sumar 1 punto por clic
                 if (globalScore > goal) globalScore = goal; // No pasar del objetivo
                 updateUI();
             }
