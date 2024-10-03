@@ -5,11 +5,93 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aplicación en Mantenimiento</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .countdown-container {
+            margin-top: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            width: 80%;
+            max-width: 500px;
+        }
+
+        .countdown {
+            font-size: 40px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-around;
+            color: #f4d03f; /* Color dorado */
+        }
+
+        .countdown div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .countdown span {
+            font-size: 20px;
+            color: white;
+        }
+    </style>
 </head>
 <body>
     <div style="text-align: center; padding: 50px;">
         <h1>Estamos en Mantenimiento</h1>
-        <p>Lo sentimos, esta app está en mantenimiento en este momento.</p>
+        <p>Lo sentimos, esta app está en mantenimiento.</p>
+
+    <!-- Contador -->
+    <div class="countdown-container">
+        <h2>Tiempo maximo restante</h2>
+        <div class="countdown" id="countdown">
+            <div>
+                <span id="days">00</span>
+                <span>Días</span>
+            </div>
+            <div>
+                <span id="hours">00</span>
+                <span>Horas</span>
+            </div>
+            <div>
+                <span id="minutes">00</span>
+                <span>Minutos</span>
+            </div>
+            <div>
+                <span id="seconds">00</span>
+                <span>Segundos</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Definir la fecha y hora de destino (hora global UTC)
+        const eventDate = new Date('2024-10-04T20:00:00Z').getTime();
+
+        // Actualizar la cuenta regresiva cada segundo
+        const countdownFunction = setInterval(() => {
+            const now = new Date().getTime();
+            const distance = eventDate - now;
+
+            // Cálculos de tiempo para días, horas, minutos y segundos
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Mostrar el resultado en los elementos correspondientes
+            document.getElementById('days').innerText = days < 10 ? '0' + days : days;
+            document.getElementById('hours').innerText = hours < 10 ? '0' + hours : hours;
+            document.getElementById('minutes').innerText = minutes < 10 ? '0' + minutes : minutes;
+            document.getElementById('seconds').innerText = seconds < 10 ? '0' + seconds : seconds;
+
+            // Si la cuenta regresiva ha terminado
+            if (distance < 0) {
+                clearInterval(countdownFunction);
+                document.getElementById('countdown').innerHTML = "El mantenimiento terminará pronto...";
+            }
+        }, 1000);
+    </script>
         
         <h2>Introduce la contraseña de testing para salir.</h2>
         <input type="password" id="maintenancePassword" placeholder="Contraseña">
