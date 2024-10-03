@@ -88,55 +88,6 @@
         body.modal-open {
             overflow: hidden;
         }
-
-        h1 {
-            margin-bottom: 20px;
-        }
-
-        .minigame-container {
-            text-align: center;
-        }
-
-        .score {
-            font-size: 1.5em;
-            margin-bottom: 10px;
-        }
-
-        .click-button {
-            padding: 10px 20px;
-            font-size: 1.2em;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-        }
-
-        .click-button:hover {
-            background-color: #45a049;
-        }
-
-        .progress-bar {
-            background-color: #ddd;
-            border-radius: 25px;
-            width: 80%;
-            margin: 20px auto;
-            overflow: hidden;
-        }
-
-        .progress {
-            background-color: #4CAF50;
-            height: 30px;
-            border-radius: 25px;
-            width: 0;
-            transition: width 0.3s;
-        }
-
-        .reward-message {
-            font-size: 1.2em;
-            margin-top: 20px;
-            display: none;
-        }
     </style>
 </head>
 <body>
@@ -220,57 +171,6 @@
             </a>
         </div>
     </div>
-
-    <div class="minigame-container">
-        <div class="score">Puntaje Global: <span id="global-score">0</span> / 49,000,000</div>
-        <button class="click-button" id="click-btn">Sumar puntos</button>
-        
-        <div class="progress-bar">
-            <div class="progress" id="progress"></div>
-        </div>
-
-        <div class="reward-message" id="reward-message">
-            ¡Felicidades! Se ha desbloqueado al personaje mítico <strong>Kurieta</strong> en la siguiente versión.
-        </div>
-    </div>
-
-    <script>
-        // Variables globales
-        let globalScore = 0;
-        const goal = 48000000;
-        const deadline = new Date('2024-10-10'); // Fecha límite
-
-        // Elementos del DOM
-        const globalScoreElement = document.getElementById('global-score');
-        const progressElement = document.getElementById('progress');
-        const rewardMessage = document.getElementById('reward-message');
-        const clickBtn = document.getElementById('click-btn');
-
-        // Función para actualizar la interfaz
-        function updateUI() {
-            globalScoreElement.textContent = globalScore.toLocaleString();
-            const progressPercentage = (globalScore / goal) * 100;
-            progressElement.style.width = progressPercentage + '%';
-
-            // Mostrar mensaje de recompensa si el objetivo se alcanza
-            if (globalScore >= goal && new Date() <= deadline) {
-                rewardMessage.style.display = 'block';
-                clickBtn.disabled = true; // Desactivar el botón
-            }
-        }
-
-        // Evento al hacer clic en el botón para sumar puntos
-        clickBtn.addEventListener('click', () => {
-            if (new Date() <= deadline) {
-                globalScore += 1; // Sumar 1 punto por clic
-                if (globalScore > goal) globalScore = goal; // No pasar del objetivo
-                updateUI();
-            }
-        });
-
-        // Inicializar la interfaz
-        updateUI();
-    </script>
   
 </body>
 </html>
