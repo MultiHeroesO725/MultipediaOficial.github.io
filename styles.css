@@ -74,6 +74,41 @@ h1 {
     animation: bounce 0.5s;
 }
 
+.character-itel {
+    margin: 10px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    border-radius: 10px;
+    flex: 1 1 calc(33.333% - 20px);
+    box-sizing: border-box;
+    color: #ff6e8d;
+    font-weight: bold;
+    text-decoration: none;
+    color: inherit;
+}
+
+.character-itel img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.character-itel p {
+    margin: 5px 0 0;
+    color: #ff6e8d;
+    font-weight: bold;
+}
+
+.character-itel a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.character-itel:hover {
+    animation: bounce 0.5s;
+}
+
 @keyframes bounce {
     0%, 20%, 50%, 80%, 100% {
         transform: translateY(0);
