@@ -77,12 +77,12 @@ h1 {
 .character-itel {
     margin: 10px;
     text-align: center;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(255, 105, 180, 0.7);
     padding: 10px;
     border-radius: 10px;
     flex: 1 1 calc(33.333% - 20px);
     box-sizing: border-box;
-    color: #ff6e8d;
+    color: #f4f4f4;
     font-weight: bold;
     text-decoration: none;
     color: inherit;
@@ -96,7 +96,7 @@ h1 {
 
 .character-itel p {
     margin: 5px 0 0;
-    color: #ff6e8d;
+    color: #f4f4f4;
     font-weight: bold;
 }
 
