@@ -294,6 +294,83 @@ h1 {
   border-color: #ffffff
 }
 
+.type-traveller {
+  background: #ffffff;
+  background-image: -webkit-linear-gradient(#ffffff, #ffffff);
+  background-image: linear-gradient(#ffffff, #ffffff);
+  border-color: #ffffff
+}
+
+.type-purity {
+  background: #ffffff;
+  background-image: -webkit-linear-gradient(#ffffff, #ffffff);
+  background-image: linear-gradient(#fff29c, #ffffff);
+  border-color: #ffffff
+}
+
+.type-corruption {
+  background: #ffffff;
+  background-image: -webkit-linear-gradient(#ffffff, #ffffff);
+  background-image: linear-gradient(#33115c, #ffffff);
+  border-color: #ffffff
+}
+
+.type-clonetype {
+  background: #ffffff;
+  background-image: -webkit-linear-gradient(#ffffff, #ffffff);
+  background-image: linear-gradient(#b9ff14, #ffffff);
+  border-color: #ffffff
+}
+
+.type-will {
+  background: #ffffff;
+  background-image: -webkit-linear-gradient(#ffffff, #ffffff);
+  background-image: linear-gradient(#d1b31f, #ffffff);
+  border-color: #ffffff
+}
+
+.type-space-time-control {
+  background: #ffffff;
+  background-image: -webkit-linear-gradient(#ffffff, #ffffff);
+  background-image: linear-gradient(#d1b31f, #ffffff);
+  border-color: #ffffff
+}
+
+.type-psychic-control {
+  background: #ffffff;
+  background-image: -webkit-linear-gradient(#ffffff, #ffffff);
+  background-image: linear-gradient(#1a12ff, #ffffff);
+  border-color: #ffffff
+}
+
+.type-shapeshifter {
+  background: #ffffff;
+  background-image: -webkit-linear-gradient(#ffffff, #ffffff);
+  background-image: linear-gradient(#8c12ff, #ffffff);
+  border-color: #ffffff
+}
+
+.type-omnilingualism {
+  background: #ffffff;
+  background-image: -webkit-linear-gradient(#ffffff, #ffffff);
+  background-image: linear-gradient(#857618, #ffffff);
+  border-color: #ffffff
+}
+
+.type-omnipotence {
+  background: #ffffff;
+  background-image: -webkit-linear-gradient(#ffffff, #ffffff);
+  background-image: linear-gradient(#00d95e, #ffffff);
+  border-color: #ffffff
+}
+
+.type-mh {
+  background: #ffffff;
+  background-image: -webkit-linear-gradient(#ffffff, #ffffff);
+  background-image: linear-gradient(#777777, #ffffff);
+  border-color: #ffffff
+}
+
 .type-all {
   background: linear-gradient(#e8fff5, #d62d90);
   background-image: -webkit-linear-gradient(#e6faf9, #33ffd6);
