@@ -20,10 +20,10 @@
                 info.innerHTML = '';
                 code.value = 'No Disponible';
                 codeR.value = 'No Disponible';
-            } else if (forma == 'f2') {
+            } else if (forma == '2022') {
                 info.innerHTML = '';
-                code.value = 'No disponible';
-                codeR.value = 'No disponible';
+                code.value = 'No Disponible';
+                codeR.value = 'No Disponible';
             }
         }
 
@@ -31,7 +31,7 @@
             const imagen = document.getElementById('imagen-personaje');
             if (currentForma === 'n') {
                 imagen.src = isRef ? '125r.png' : '125.png';
-            } else if (currentForma === 'f2') {
+            } else if (currentForma === '2022') {
                 imagen.src = isRef ? '125ar.png' : '125a.png';
             }
         }
@@ -57,8 +57,8 @@
         <img id="imagen-personaje" src="125.png" alt="">
     </div>
     <div class="forma-buttons">
-        <!--button onclick="cambiarForma('n')">Normal</button>
-        <button onclick="cambiarForma('f2')">Forma 2</button-->
+        <button onclick="cambiarForma('n')">Normal</button>
+        <button onclick="cambiarForma('2022')">2022</button>
         <button onclick="alternarRef()">✨</button>
     </div>
     <div class="character-info">
