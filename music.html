@@ -171,9 +171,11 @@
 
         <!-- Controles de reproducción -->
         <div class="controls">
+            <button id="exitBtn">↩</button>
             <button id="prev">◁</button>
             <button id="playPause">▶</button>
             <button id="next">▷</button>
+            <a id="downloadBtn" download><button>Descargar</button></a>
         </div>
 
         <!-- Barra de progreso de la canción -->
@@ -202,12 +204,19 @@
         let currentSong = null;
         let isPlaying = false;
 
+        // Variables globales
+        const downloadBtn = document.getElementById('downloadBtn');
+        const exitBtn = document.getElementById('exitBtn');
+
         // Función para cambiar la canción
         function changeSong(songPath, albumImage, songTitle) {
             currentSong = songPath;
             audioPlayer.src = songPath;
             albumArt.style.backgroundImage = `url(${albumImage})`;
             currentSongTitle.textContent = songTitle;
+
+            // Actualizar el botón de descarga con la URL de la canción actual
+            downloadBtn.href = songPath;
         
             // Desactivar el botón de reproducción hasta que se cargue la canción
             playPauseBtn.disabled = true;
@@ -217,6 +226,11 @@
             const currentLi = document.querySelector(`[data-song="${songPath}"]`);
             currentLi.classList.add('active');
         }
+
+        // Función para regresar al index
+        exitBtn.addEventListener('click', function() {
+            window.location.href = 'index.html'; // Redirige al index
+        });
         
         // Reproducir la canción solo cuando esté completamente cargada
         audioPlayer.addEventListener('canplaythrough', function() {
@@ -299,16 +313,6 @@
         progressBar.addEventListener('input', function() {
             const seekTime = (progressBar.value / 100) * audioPlayer.duration;
             audioPlayer.currentTime = seekTime;
-        });
-        
-        // Botón de descarga
-        document.getElementById('download-btn').addEventListener('click', function() {
-            const link = document.createElement('a');
-            link.href = currentSong; // Usamos la URL de la canción actual
-            link.download = currentSong.split('/').pop(); // Nombre del archivo
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
         });
 
     </script>
