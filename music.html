@@ -184,19 +184,44 @@
         let isPlaying = false;
 
         // Función para cambiar la canción
-        function changeSong(songPath, albumImage, songTitle) {
-            currentSong = songPath;
-            audioPlayer.src = songPath;
-            albumArt.style.backgroundImage = `url(${albumImage})`;
-            currentSongTitle.textContent = songTitle;
-            
-            // Quitar la clase activa de todos los elementos y marcar la canción actual
-            document.querySelectorAll('.song-list li').forEach(li => li.classList.remove('active'));
-            const currentLi = document.querySelector(`[data-song="${songPath}"]`);
-            currentLi.classList.add('active');
-            
-            playSong();
-        }
+function changeSong(songPath, albumImage, songTitle) {
+    currentSong = songPath;
+    audioPlayer.src = songPath;
+    albumArt.style.backgroundImage = `url(${albumImage})`;
+    currentSongTitle.textContent = songTitle;
+
+    // Desactivar el botón de reproducción hasta que se cargue la canción
+    playPauseBtn.disabled = true;
+
+    // Quitar la clase activa de todos los elementos y marcar la canción actual
+    document.querySelectorAll('.song-list li').forEach(li => li.classList.remove('active'));
+    const currentLi = document.querySelector(`[data-song="${songPath}"]`);
+    currentLi.classList.add('active');
+}
+
+// Reproducir la canción solo cuando esté completamente cargada
+audioPlayer.addEventListener('canplaythrough', function() {
+    playPauseBtn.disabled = false; // Habilitar el botón cuando la canción esté lista
+    playSong(); // Iniciar la reproducción automáticamente
+});
+
+// Pasar a la siguiente canción automáticamente cuando la actual termine
+audioPlayer.addEventListener('ended', function() {
+    let currentLi = Array.from(songList.children).find(li => li.getAttribute('data-song') === currentSong);
+    let nextLi = currentLi.nextElementSibling;
+    
+    if (nextLi) {
+        // Si hay una siguiente canción, cambiar a esa
+        changeSong(nextLi.getAttribute('data-song'), nextLi.getAttribute('data-image'), nextLi.textContent);
+    } else {
+        // Si no hay más canciones, volver a la primera
+        let firstLi = songList.children[0];
+      changeSong(firstLi.getAttribute('data-song'), firstLi.getAttribute('data-image'), firstLi.textContent);
+}
+  });
+
+ 
+
 
         // Función para reproducir la canción
         function playSong() {
