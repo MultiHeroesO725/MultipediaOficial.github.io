@@ -113,6 +113,46 @@
 
         .progress-bar input[type="range"] {
             width: 100%;
+
+        /* Barra de buffer */
+        .buffered-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 5px;
+            width: 0;
+            background-color: rgba(255, 255, 255, 0.5); /* Color semitransparente para indicar la parte descargada */
+            z-index: 1;
+        }
+        
+        .progress-container {
+            position: relative;
+            width: 100%;
+            height: 5px;
+        }
+        
+        #progress-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 2; /* Por encima de la barra de buffer */
+        }
+        
+        #download-btn {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        #download-btn:hover {
+            background-color: #45a049;
+        }
+
         }
     </style>
 </head>
@@ -188,44 +228,41 @@
         let isPlaying = false;
 
         // Función para cambiar la canción
-function changeSong(songPath, albumImage, songTitle) {
-    currentSong = songPath;
-    audioPlayer.src = songPath;
-    albumArt.style.backgroundImage = `url(${albumImage})`;
-    currentSongTitle.textContent = songTitle;
-
-    // Desactivar el botón de reproducción hasta que se cargue la canción
-    playPauseBtn.disabled = true;
-
-    // Quitar la clase activa de todos los elementos y marcar la canción actual
-    document.querySelectorAll('.song-list li').forEach(li => li.classList.remove('active'));
-    const currentLi = document.querySelector(`[data-song="${songPath}"]`);
-    currentLi.classList.add('active');
-}
-
-// Reproducir la canción solo cuando esté completamente cargada
-audioPlayer.addEventListener('canplaythrough', function() {
-    playPauseBtn.disabled = false; // Habilitar el botón cuando la canción esté lista
-    playSong(); // Iniciar la reproducción automáticamente
-});
-
-// Pasar a la siguiente canción automáticamente cuando la actual termine
-audioPlayer.addEventListener('ended', function() {
-    let currentLi = Array.from(songList.children).find(li => li.getAttribute('data-song') === currentSong);
-    let nextLi = currentLi.nextElementSibling;
-    
-    if (nextLi) {
-        // Si hay una siguiente canción, cambiar a esa
-        changeSong(nextLi.getAttribute('data-song'), nextLi.getAttribute('data-image'), nextLi.textContent);
-    } else {
-        // Si no hay más canciones, volver a la primera
-        let firstLi = songList.children[0];
-      changeSong(firstLi.getAttribute('data-song'), firstLi.getAttribute('data-image'), firstLi.textContent);
-}
-  });
-
- 
-
+        function changeSong(songPath, albumImage, songTitle) {
+            currentSong = songPath;
+            audioPlayer.src = songPath;
+            albumArt.style.backgroundImage = `url(${albumImage})`;
+            currentSongTitle.textContent = songTitle;
+        
+            // Desactivar el botón de reproducción hasta que se cargue la canción
+            playPauseBtn.disabled = true;
+        
+            // Quitar la clase activa de todos los elementos y marcar la canción actual
+            document.querySelectorAll('.song-list li').forEach(li => li.classList.remove('active'));
+            const currentLi = document.querySelector(`[data-song="${songPath}"]`);
+            currentLi.classList.add('active');
+        }
+        
+        // Reproducir la canción solo cuando esté completamente cargada
+        audioPlayer.addEventListener('canplaythrough', function() {
+            playPauseBtn.disabled = false; // Habilitar el botón cuando la canción esté lista
+            playSong(); // Iniciar la reproducción automáticamente
+        });
+        
+        // Pasar a la siguiente canción automáticamente cuando la actual termine
+        audioPlayer.addEventListener('ended', function() {
+            let currentLi = Array.from(songList.children).find(li => li.getAttribute('data-song') === currentSong);
+            let nextLi = currentLi.nextElementSibling;
+            
+            if (nextLi) {
+                // Si hay una siguiente canción, cambiar a esa
+                changeSong(nextLi.getAttribute('data-song'), nextLi.getAttribute('data-image'), nextLi.textContent);
+            } else {
+                // Si no hay más canciones, volver a la primera
+                let firstLi = songList.children[0];
+              changeSong(firstLi.getAttribute('data-song'), firstLi.getAttribute('data-image'), firstLi.textContent);
+        }
+          });
 
         // Función para reproducir la canción
         function playSong() {
@@ -288,6 +325,29 @@ audioPlayer.addEventListener('ended', function() {
             const seekTime = (progressBar.value / 100) * audioPlayer.duration;
             audioPlayer.currentTime = seekTime;
         });
+
+        // Actualizar la barra de buffer (cantidad descargada)
+        audioPlayer.addEventListener('progress', function() {
+            if (audioPlayer.buffered.length > 0) {
+                const bufferedEnd = audioPlayer.buffered.end(audioPlayer.buffered.length - 1); // Obtiene la parte descargada
+                const duration = audioPlayer.duration;
+                if (duration > 0) {
+                    const percentBuffered = (bufferedEnd / duration) * 100; // Calcula el porcentaje descargado
+                    document.querySelector('.buffered-bar').style.width = `${percentBuffered}%`; // Actualiza la barra de descarga
+                }
+            }
+        });
+        
+        // Botón de descarga
+        document.getElementById('download-btn').addEventListener('click', function() {
+            const link = document.createElement('a');
+            link.href = currentSong; // Usamos la URL de la canción actual
+            link.download = currentSong.split('/').pop(); // Nombre del archivo
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        });
+
     </script>
 </body>
 </html>
