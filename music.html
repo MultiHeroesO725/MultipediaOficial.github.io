@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sala de Música</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+            background-color: #f0f0f0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Sidebar con la lista de canciones */
+        .sidebar {
+            width: 25%;
+            background-color: #2c3e50;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            color: white;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #ecf0f1;
+        }
+
+        .song-list {
+            flex-grow: 1;
+            overflow-y: auto;
+            margin-bottom: 20px;
+        }
+
+        .song-list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .song-list li {
+            padding: 10px;
+            cursor: pointer;
+            border-bottom: 1px solid #34495e;
+            transition: background-color 0.3s ease;
+        }
+
+        .song-list li:hover {
+            background-color: #34495e;
+        }
+
+        /* Contenedor principal donde se muestra el disco y los controles */
+        .main-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        /* Imagen del disco */
+        .album-art {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background-color: #ecf0f1;
+            background-size: cover;
+            background-position: center;
+            margin-bottom: 20px;
+        }
+
+        /* Controles de reproducción */
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .controls button {
+            background-color: #2c3e50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .controls button:hover {
+            background-color: #34495e;
+        }
+
+        /* Botones de reproducción y pausa */
+        .play, .pause {
+            display: none;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar con la lista de canciones -->
+    <div class="sidebar">
+        <h2>Lista de Canciones</h2>
+        <div class="song-list">
+            <ul id="songList">
+                <li data-song="UMH/001.mp3" data-image="disc/none.png">♫ VS Roberto</li>
+                <li data-song="UMH/002.mp3" data-image="disc/none.png">♫ VS Ms. Karle</li>
+                <li data-song="UMH/003.mp3" data-image="disc/none.png">♫ VS Sr. Anderson</li>
+                <li data-song="UMH/004.mp3" data-image="disc/none.png">♫ VS Narumi</li>
+                <li data-song="UMH/005.mp3" data-image="disc/none.png">♫ VS Mazaki</li>
+                <li data-song="UMH/006.mp3" data-image="disc/none.png">♫ VS Lynette</li>
+                <li data-song="UMH/007.mp3" data-image="disc/none.png">♫ VS Maestra</li>
+                <li data-song="UMH/008_9_10_11.mp3" data-image="disc/none.png">♫ VS Leyendas Supremas</li>
+                <li data-song="UMH/019.mp3" data-image="disc/none.png">♫ VS Luz</li>
+                <li data-song="UMH/021.mp3" data-image="disc/none.png">♫ VS Sombra</li>
+            </ul>
+        </div>
+
+        <!-- Controles de reproducción debajo de la lista -->
+        <div class="controls">
+            <button id="prev">Anterior</button>
+            <button id="playPause">Reproducir</button>
+            <button id="next">Siguiente</button>
+        </div>
+    </div>
+
+    <!-- Contenedor principal -->
+    <div class="main-content">
+        <!-- Imagen del disco -->
+        <div id="albumArt" class="album-art"></div>
+    </div>
+
+    <!-- Elemento de audio (oculto) -->
+    <audio id="audioPlayer"></audio>
+
+    <script>
+        // Obtener elementos del DOM
+        const songList = document.getElementById('songList');
+        const albumArt = document.getElementById('albumArt');
+        const playPauseBtn = document.getElementById('playPause');
+        const audioPlayer = document.getElementById('audioPlayer');
+
+        let currentSong = null;
+
+        // Función para cambiar la canción
+        function changeSong(songPath, albumImage) {
+            currentSong = songPath;
+            audioPlayer.src = songPath;
+            albumArt.style.backgroundImage = `url(${albumImage})`;
+
+            // Reproducir la nueva canción
+            audioPlayer.play();
+            playPauseBtn.textContent = 'Pausar';
+        }
+
+        // Al hacer clic en una canción de la lista
+        songList.addEventListener('click', function(event) {
+            if (event.target.tagName === 'LI') {
+                const songPath = event.target.getAttribute('data-song');
+                const albumImage = event.target.getAttribute('data-image');
+                changeSong(songPath, albumImage);
+            }
+        });
+
+        // Control del botón de reproducción/pausa
+        playPauseBtn.addEventListener('click', function() {
+            if (audioPlayer.paused) {
+                audioPlayer.play();
+                playPauseBtn.textContent = 'Pausar';
+            } else {
+                audioPlayer.pause();
+                playPauseBtn.textContent = 'Reproducir';
+            }
+        });
+
+        // Control de canciones anteriores y siguientes
+        document.getElementById('prev').addEventListener('click', function() {
+            // Cambiar a la canción anterior
+            let currentLi = Array.from(songList.children).find(li => li.getAttribute('data-song') === currentSong);
+            let prevLi = currentLi.previousElementSibling;
+            if (prevLi) {
+                changeSong(prevLi.getAttribute('data-song'), prevLi.getAttribute('data-image'));
+            }
+        });
+
+        document.getElementById('next').addEventListener('click', function() {
+            // Cambiar a la canción siguiente
+            let currentLi = Array.from(songList.children).find(li => li.getAttribute('data-song') === currentSong);
+            let nextLi = currentLi.nextElementSibling;
+            if (nextLi) {
+                changeSong(nextLi.getAttribute('data-song'), nextLi.getAttribute('data-image'));
+            }
+        });
+    </script>
+</body>
+</html>
