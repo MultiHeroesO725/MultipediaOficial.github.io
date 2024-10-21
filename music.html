@@ -113,31 +113,6 @@
 
         .progress-bar input[type="range"] {
             width: 100%;
-
-        /* Barra de buffer */
-        .buffered-bar {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 5px;
-            width: 0;
-            background-color: rgba(255, 255, 255, 0.5); /* Color semitransparente para indicar la parte descargada */
-            z-index: 1;
-        }
-        
-        .progress-container {
-            position: relative;
-            width: 100%;
-            height: 5px;
-        }
-        
-        #progress-bar {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 2; /* Por encima de la barra de buffer */
-        }
         
         #download-btn {
             margin-top: 10px;
@@ -196,9 +171,9 @@
 
         <!-- Controles de reproducción -->
         <div class="controls">
-            <button id="prev">Anterior</button>
-            <button id="playPause">Reproducir</button>
-            <button id="next">Siguiente</button>
+            <button id="prev">◁</button>
+            <button id="playPause">▶</button>
+            <button id="next">▷</button>
         </div>
 
         <!-- Barra de progreso de la canción -->
@@ -208,7 +183,7 @@
         </div>
 
         <!-- Botón para descargar la canción -->
-        <button id="download-btn">DL</button>
+        <button id="download-btn">💾</button>
 
     </div>
 
@@ -267,14 +242,14 @@
         // Función para reproducir la canción
         function playSong() {
             audioPlayer.play();
-            playPauseBtn.textContent = 'Pausar';
+            playPauseBtn.textContent = '❚❚';
             isPlaying = true;
         }
 
         // Función para pausar la canción
         function pauseSong() {
             audioPlayer.pause();
-            playPauseBtn.textContent = 'Reproducir';
+            playPauseBtn.textContent = '▶';
             isPlaying = false;
         }
 
@@ -324,18 +299,6 @@
         progressBar.addEventListener('input', function() {
             const seekTime = (progressBar.value / 100) * audioPlayer.duration;
             audioPlayer.currentTime = seekTime;
-        });
-
-        // Actualizar la barra de buffer (cantidad descargada)
-        audioPlayer.addEventListener('progress', function() {
-            if (audioPlayer.buffered.length > 0) {
-                const bufferedEnd = audioPlayer.buffered.end(audioPlayer.buffered.length - 1); // Obtiene la parte descargada
-                const duration = audioPlayer.duration;
-                if (duration > 0) {
-                    const percentBuffered = (bufferedEnd / duration) * 100; // Calcula el porcentaje descargado
-                    document.querySelector('.buffered-bar').style.width = `${percentBuffered}%`; // Actualiza la barra de descarga
-                }
-            }
         });
         
         // Botón de descarga
