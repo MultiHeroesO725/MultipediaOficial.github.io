@@ -75,6 +75,39 @@
             color: red;
             text-align: center;
         }
+
+        /* Imagen emergente */
+        .image-overlay {
+            position: fixed;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            animation: slideIn 0.5s forwards;
+        }
+
+        .image-content {
+            width: 80%;
+            max-width: 600px;
+            height: auto;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        /* Animaciones */
+        @keyframes slideIn {
+            from { top: 100%; }
+            to { top: 0; }
+        }
+
+        @keyframes slideOut {
+            from { top: 0; }
+            to { top: 100%; }
+        }
     </style>
 </head>
 <body>
@@ -94,22 +127,46 @@
         </div>
     </div>
 
+    <!-- Imagen emergente -->
+    <div class="image-overlay" id="imageOverlay">
+        <img src="creacion.png" alt="Imagen especial" class="image-content">
+    </div>
+
     <script>
         const submitBtn = document.getElementById('submitCode');
         const modalOverlay = document.getElementById('modalOverlay');
         const codeInput = document.getElementById('codeInput');
+        const imageOverlay = document.getElementById('imageOverlay');
 
         submitBtn.addEventListener('click', () => {
-            const code = codeInput.value;
+            const code = codeInput.value.trim().toLowerCase();
 
-            // Aquí irán los códigos correctos en el futuro, por ahora muestra siempre código incorrecto
-            if (code !== "qwefmreosdnvnvsgnvofivnsdjdsvijfd") { // Sustituir por la lógica de códigos correctos
+            // Comprobar si el código ingresado es correcto
+            if (code === "creación" || code === "creacion") {
+                // Mostrar la imagen emergente con animación
+                imageOverlay.innerHTML = '<img src="Creacion.png" alt="Imagen especial" class="image-content">';
+                imageOverlay.style.display = 'flex';
+                imageOverlay.style.animation = 'slideIn 0.5s forwards';
+            } else if (code === "rea") {
+            // Mostrar la imagen emergente de Rea con animación
+                imageOverlay.innerHTML = '<img src="button.png" alt="Imagen especial" class="image-content">';
+                imageOverlay.style.display = 'flex';
+                imageOverlay.style.animation = 'slideIn 0.5s forwards';
+            } else {
+                // Mostrar modal de código incorrecto
                 modalOverlay.style.display = 'flex';
+                setTimeout(() => {
+                    modalOverlay.style.display = 'none';
+                }, 2000);
             }
+        });
 
+        // Ocultar imagen emergente al hacer clic en cualquier parte
+        imageOverlay.addEventListener('click', () => {
+            imageOverlay.style.animation = 'slideOut 0.5s forwards';
             setTimeout(() => {
-                modalOverlay.style.display = 'none';
-            }, 2000);
+                imageOverlay.style.display = 'none';
+            }, 500);
         });
     </script>
 
