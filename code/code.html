@@ -131,15 +131,6 @@
             transition: bottom 1s ease-out;
             max-width: 300px;
         }
-
-        .character-animation2 {
-            position: absolute;
-            bottom: -100%; /* Empieza fuera de la pantalla */ 
-            left: 50%;
-            transform: translateX(-55%) translateY(-24%); /* Centrar horizontalmente y ajustar verticalmente */
-            transition: bottom 1s ease-out;
-            max-width: 300px;
-        }
         
         .fade-out {
             animation: fadeOut 1s forwards;
@@ -179,11 +170,6 @@
         <audio id="ohayoAudio"></audio>
     </div>
 
-    <div id="ohayoOverlay" class="overlay">
-        <img id="ohayo2Character" src="" alt="Personaje" class="character-animation2">
-        <audio id="ohayoAudio"></audio>
-    </div>
-
 
     <script>
         const submitBtn = document.getElementById('submitCode');
@@ -211,7 +197,6 @@
                 const isTsu = Math.random() < (1 / 5);
         
                 const ohayoCharacter = document.getElementById('ohayoCharacter');
-                const ohayo2Character = document.getElementById('ohayo2Character');
                 const ohayoAudio = document.getElementById('ohayoAudio');
                 const ohayoOverlay = document.getElementById('ohayoOverlay');
         
@@ -221,7 +206,7 @@
                 // Elegir imagen y sonido según si es raro o no
                 if (isRef) {
                     if (isTsu) {
-                        ohayo2Character.src = 'ohayo2r.png'; // Imagen rara
+                        ohayoCharacter.src = 'ohayo2r.png'; // Imagen rara
                         const refSound = new Audio('ref.ogg'); // Sonido adicional de destellos
                         refSound.play(); // Reproducir sonido raro adicional
                     } else {
@@ -232,7 +217,7 @@
                     }
                 } else {
                     if (isTsu) {
-                        ohayo2Character.src = 'ohayo2.png'; // Imagen normal
+                        ohayoCharacter.src = 'ohayo2.png'; // Imagen normal
                     } else {
                         ohayoCharacter.src = 'ohayo.png'; // Imagen normal
                         ohayoAudio.src = 'ohayo.ogg'; // Sonido normal
