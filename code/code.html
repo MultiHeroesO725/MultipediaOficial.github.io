@@ -193,8 +193,7 @@
                 imageOverlay.style.animation = 'slideIn 0.5s forwards';
             } else if (code === "ohayo") {
                 // Generar probabilidad de 1/500
-                const isRef = Math.random() < (1 / 5);
-                const isTsu = Math.random() < (1 / 5);
+                const isRef = Math.random() < (1 / 500);
         
                 const ohayoCharacter = document.getElementById('ohayoCharacter');
                 const ohayoAudio = document.getElementById('ohayoAudio');
@@ -205,23 +204,14 @@
         
                 // Elegir imagen y sonido según si es raro o no
                 if (isRef) {
-                    if (isTsu) {
-                        ohayoCharacter.src = 'ohayo2r.png'; // Imagen rara
-                        const refSound = new Audio('ref.ogg'); // Sonido adicional de destellos
-                        refSound.play(); // Reproducir sonido raro adicional
-                    } else {
-                        ohayoCharacter.src = 'ohayor.png'; // Imagen rara
-                        ohayoAudio.src = 'ohayor.ogg'; // Sonido raro
-                        const refSound = new Audio('ref.ogg'); // Sonido adicional de destellos
-                        refSound.play(); // Reproducir sonido raro adicional
+                    ohayoCharacter.src = 'ohayor.png'; // Imagen rara
+                    ohayoAudio.src = 'ohayor.ogg'; // Sonido raro
+                    const refSound = new Audio('ref.ogg'); // Sonido adicional de destellos
+                    refSound.play(); // Reproducir sonido raro adicional
                     }
                 } else {
-                    if (isTsu) {
-                        ohayoCharacter.src = 'ohayo2.png'; // Imagen normal
-                    } else {
-                        ohayoCharacter.src = 'ohayo.png'; // Imagen normal
-                        ohayoAudio.src = 'ohayo.ogg'; // Sonido normal
-                    }
+                    ohayoCharacter.src = 'ohayo.png'; // Imagen normal
+                    ohayoAudio.src = 'ohayo.ogg'; // Sonido normal
                 }
         
                 // Mostrar overlay con animación
