@@ -108,6 +108,43 @@
             from { top: 0; }
             to { top: 100%; }
         }
+
+        .park-background {
+            background-image: url('park.jpg');
+            background-size: cover;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+        }
+        
+        .character-img {
+            width: 200px;
+            height: auto;
+            animation: slideIn 0.5s forwards;
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+            }
+            to {
+                opacity: 0;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -148,54 +185,40 @@
                 imageOverlay.style.display = 'flex';
                 imageOverlay.style.animation = 'slideIn 0.5s forwards';
             } else if (code === "rea") {
-            // Mostrar la imagen emergente de Rea con animación
+                // Mostrar la imagen emergente de Rea con animación
                 imageOverlay.innerHTML = '<img src="button.png" alt="Imagen especial" class="image-content">';
                 imageOverlay.style.display = 'flex';
                 imageOverlay.style.animation = 'slideIn 0.5s forwards';
-            } else if (code === "ohayo" || code === "good morning" || code === "buenos dias" || code === "buenos días") {
-                // Generar un número aleatorio entre 1 y 500
-                const randomChance = Math.floor(Math.random() * 500) + 1;
-        
-                // Seleccionar el personaje y los efectos dependiendo de la probabilidad
-                let characterImage = 'ohayo.png'; // Imagen normal
-                let soundEffect = 'ohayo.ogg'; // SFX normal
-                let rareEffect = ''; // Efecto adicional vacío por defecto
-                let rare = false;
-        
-                if (randomChance === 1) {
-                    // Si el número es 1 (1/500 probabilidad), selecciona la imagen rara
-                    characterImage = 'ohayor.png';
-                    soundEffect = 'ohayor.ogg'; // SFX del personaje
-                    rareEffect = 'ref.ogg'; // Efecto adicional de destellos
-                    rare = true;
-                }
-        
-                // Mostrar la animación del personaje emergiendo desde abajo
-                imageOverlay.innerHTML = `
-                    <div class="character-container">
-                        <img src="${characterImage}" alt="Ohayo Character" class="image-character">
-                    </div>
-                `;
+            } else if (code === "ohayo") {
+                // Probabilidad para el personaje raro (1/500)
+                const isRare = Math.random() < 1 / 500;
+                
+                // Configurar el fondo de parque
+                imageOverlay.innerHTML = `<div class="park-background">
+                                            <img src="${isRare ? 'ohayor.png' : 'ohayo.png'}" alt="Personaje" class="character-img">
+                                          </div>`;
+                
+                // Mostrar el fondo y el personaje con la animación desde abajo
                 imageOverlay.style.display = 'flex';
-                imageOverlay.style.animation = 'slideIn 1s forwards';
+                imageOverlay.style.animation = 'slideIn 0.5s forwards';
         
-                // Reproducir el sonido de saludo
-                const audio = new Audio(soundEffect);
-                audio.play();
+                // Reproducir el sonido "Ohayo"
+                let ohayoAudio = new Audio('ohayo.ogg');
+                ohayoAudio.play();
         
-                // Si es un personaje raro, reproducir el sonido de destellos
-                if (rare) {
-                    const rareAudio = new Audio(rareEffect);
-                    setTimeout(() => rareAudio.play(), 500); // Añadir un pequeño retraso
+                // Si es raro, reproducir un segundo sonido para los destellos
+                if (isRare) {
+                    let sparkleAudio = new Audio('ref.ogg');
+                    sparkleAudio.play();
                 }
         
-                // Desaparecer con efecto de difuminado
+                // Al finalizar la animación, aplicar el difuminado
                 setTimeout(() => {
                     imageOverlay.style.animation = 'fadeOut 1s forwards';
                     setTimeout(() => {
-                        imageOverlay.style.display = 'none';
-                    }, 1000); // Después de que termine el fadeOut
-                }, 4000); // Mantiene la imagen durante 4 segundos antes de desaparecer
+                        imageOverlay.style.display = 'none'; // Ocultar la animación después de terminar
+                    }, 1000);
+                }, 3000); // Duración de la animación antes del difuminado (ajustable)
             } else {
                 // Mostrar modal de código incorrecto
                 modalOverlay.style.display = 'flex';
