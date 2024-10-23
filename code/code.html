@@ -124,8 +124,10 @@
         }
         
         .character-animation {
-            position: relative;
-            bottom: -100%;
+            position: absolute;
+            bottom: -100%; /* Empieza fuera de la pantalla */ 
+            left: 50%;
+            transform: translateX(-50%) translateY(-30%); /* Centrar horizontalmente y ajustar verticalmente */
             transition: bottom 1s ease-out;
             max-width: 300px;
         }
