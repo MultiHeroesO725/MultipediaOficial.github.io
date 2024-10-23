@@ -109,36 +109,34 @@
             to { top: 100%; }
         }
 
-        @keyframes slideInn {
-            from { transform: translateY(100%); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('park.jpg') no-repeat center center;
+            background-size: cover;
+            z-index: 1000;
+            justify-content: center;
+            align-items: flex-end;
+        }
+        
+        .character-animation {
+            position: relative;
+            bottom: -100%;
+            transition: bottom 1s ease-out;
+            max-width: 300px;
+        }
+        
+        .fade-out {
+            animation: fadeOut 1s forwards;
         }
         
         @keyframes fadeOut {
-            from { opacity: 1; }
-            to { opacity: 0; }
-        }
-        
-        .ohayo-animation {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .background-image {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-        
-        .character-image {
-            position: relative;
-            z-index: 2;
-            animation: slideInn 1s ease-out;
+            0% { opacity: 1; }
+            100% { opacity: 0; }
         }
 
     </style>
@@ -165,6 +163,12 @@
         <img src="creacion.png" alt="Imagen especial" class="image-content">
     </div>
 
+    <div id="ohayoOverlay" class="overlay">
+        <img id="ohayoCharacter" src="" alt="Personaje" class="character-animation">
+        <audio id="ohayoAudio"></audio>
+    </div>
+
+
     <script>
         const submitBtn = document.getElementById('submitCode');
         const modalOverlay = document.getElementById('modalOverlay');
@@ -185,52 +189,47 @@
                 imageOverlay.innerHTML = '<img src="button.png" alt="Imagen especial" class="image-content">';
                 imageOverlay.style.display = 'flex';
                 imageOverlay.style.animation = 'slideIn 0.5s forwards';
-            } else if (code === "ohayo") {
-                // Generar número aleatorio entre 1 y 500 para determinar si aparece el personaje raro
-                const randomNum = Math.floor(Math.random() * 500) + 1;
+            if (code === "ohayo") {
+                // Generar probabilidad de 1/500
+                const isRare = Math.random() < (1 / 500);
         
-                if (randomNum === 1) {
-                    // Personaje raro (probabilidad 1/500)
-                    imageOverlay.innerHTML = `
-                        <div class="ohayo-animation">
-                            <img src="park.jpg" class="background-image" alt="Fondo del parque">
-                            <img src="ohayor.png" class="character-image" alt="Personaje raro">
-                        </div>`;
-                    
-                    // Reproducir sonido raro y efecto adicional
-                    const audio1 = new Audio('ohayor.ogg');
-                    const audio2 = new Audio('ref.ogg');  // SFX de destellos
-                    audio1.play();
-                    audio2.play();
+                const ohayoCharacter = document.getElementById('ohayoCharacter');
+                const ohayoAudio = document.getElementById('ohayoAudio');
+                const ohayoOverlay = document.getElementById('ohayoOverlay');
         
-                } else {
-                    // Personaje normal
-                    imageOverlay.innerHTML = `
-                        <div class="ohayo-animation">
-                            <img src="park.jpg" class="background-image" alt="Fondo del parque">
-                            <img src="ohayo.png" class="character-image" alt="Personaje normal">
-                        </div>`;
-                    
-                    // Reproducir sonido normal
-                    const audio = new Audio('ohayo.ogg');
-                    audio.play();
-                }
-        
-                // Mostrar la animación y evitar interacción con el fondo
-                imageOverlay.style.display = 'flex';
-                imageOverlay.style.animation = 'slideInn 0.5s forwards';
-        
-                // Desactivar la interacción con el fondo
+                // Deshabilitar la interacción con el fondo
                 document.body.style.pointerEvents = 'none';
         
-                // Difuminado después de la animación
+                // Elegir imagen y sonido según si es raro o no
+                if (isRare) {
+                    ohayoCharacter.src = 'ohayor.png'; // Imagen rara
+                    ohayoAudio.src = 'ohayor.ogg'; // Sonido raro
+                    const refSound = new Audio('ref.ogg'); // Sonido adicional de destellos
+                    refSound.play(); // Reproducir sonido raro adicional
+                } else {
+                    ohayoCharacter.src = 'ohayo.png'; // Imagen normal
+                    ohayoAudio.src = 'ohayo.ogg'; // Sonido normal
+                }
+        
+                // Mostrar overlay con animación
+                ohayoOverlay.style.display = 'flex';
+        
+                // Mover personaje desde abajo
                 setTimeout(() => {
-                    imageOverlay.style.animation = 'fadeOut 1s forwards';
+                    ohayoCharacter.style.bottom = '0';
+                    ohayoAudio.play(); // Reproducir sonido
+                }, 100);
+        
+                // Finalizar animación con difuminado
+                setTimeout(() => {
+                    ohayoOverlay.classList.add('fade-out');
                     setTimeout(() => {
-                        imageOverlay.style.display = 'none';
-                        document.body.style.pointerEvents = 'auto'; // Reactivar la interacción con el fondo
-                    }, 1000);
-                }, 5000); // La animación dura 5 segundos
+                        ohayoOverlay.style.display = 'none'; // Ocultar overlay
+                        ohayoOverlay.classList.remove('fade-out');
+                        ohayoCharacter.style.bottom = '-100%'; // Reiniciar posición del personaje
+                        document.body.style.pointerEvents = 'auto'; // Habilitar la interacción con el fondo
+                    }, 1000); // Duración del difuminado
+                }, 3000); // Duración total de la animación antes de difuminar
             } else {
                 // Mostrar modal de código incorrecto
                 modalOverlay.style.display = 'flex';
