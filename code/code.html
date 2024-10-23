@@ -152,6 +152,50 @@
                 imageOverlay.innerHTML = '<img src="button.png" alt="Imagen especial" class="image-content">';
                 imageOverlay.style.display = 'flex';
                 imageOverlay.style.animation = 'slideIn 0.5s forwards';
+            } else if (code === "ohayo" || code === "good morning" || code === "buenos dias" || code === "buenos días") {
+                // Generar un número aleatorio entre 1 y 500
+                const randomChance = Math.floor(Math.random() * 500) + 1;
+        
+                // Seleccionar el personaje y los efectos dependiendo de la probabilidad
+                let characterImage = 'ohayo.png'; // Imagen normal
+                let soundEffect = 'ohayo.ogg'; // SFX normal
+                let rareEffect = ''; // Efecto adicional vacío por defecto
+                let rare = false;
+        
+                if (randomChance === 1) {
+                    // Si el número es 1 (1/500 probabilidad), selecciona la imagen rara
+                    characterImage = 'ohayor.png';
+                    soundEffect = 'ohayor.ogg'; // SFX del personaje
+                    rareEffect = 'ref.ogg'; // Efecto adicional de destellos
+                    rare = true;
+                }
+        
+                // Mostrar la animación del personaje emergiendo desde abajo
+                imageOverlay.innerHTML = `
+                    <div class="character-container">
+                        <img src="${characterImage}" alt="Ohayo Character" class="image-character">
+                    </div>
+                `;
+                imageOverlay.style.display = 'flex';
+                imageOverlay.style.animation = 'slideIn 1s forwards';
+        
+                // Reproducir el sonido de saludo
+                const audio = new Audio(soundEffect);
+                audio.play();
+        
+                // Si es un personaje raro, reproducir el sonido de destellos
+                if (rare) {
+                    const rareAudio = new Audio(rareEffect);
+                    setTimeout(() => rareAudio.play(), 500); // Añadir un pequeño retraso
+                }
+        
+                // Desaparecer con efecto de difuminado
+                setTimeout(() => {
+                    imageOverlay.style.animation = 'fadeOut 1s forwards';
+                    setTimeout(() => {
+                        imageOverlay.style.display = 'none';
+                    }, 1000); // Después de que termine el fadeOut
+                }, 4000); // Mantiene la imagen durante 4 segundos antes de desaparecer
             } else {
                 // Mostrar modal de código incorrecto
                 modalOverlay.style.display = 'flex';
