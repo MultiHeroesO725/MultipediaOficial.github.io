@@ -109,40 +109,36 @@
             to { top: 100%; }
         }
 
-        .park-background {
-            background-image: url('park.jpg');
-            background-size: cover;
+        @keyframes slideInn {
+            from { transform: translateY(100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+        
+        .ohayo-animation {
+            position: relative;
             width: 100%;
             height: 100%;
             display: flex;
             justify-content: center;
-            align-items: flex-end;
+            align-items: center;
         }
         
-        .character-img {
-            width: 200px;
-            height: auto;
-            animation: slideIn 0.5s forwards;
+        .background-image {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
         }
         
-        @keyframes slideIn {
-            from {
-                transform: translateY(100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-        
-        @keyframes fadeOut {
-            from {
-                opacity: 1;
-            }
-            to {
-                opacity: 0;
-            }
+        .character-image {
+            position: relative;
+            z-index: 2;
+            animation: slideIn 1s ease-out;
         }
 
     </style>
@@ -190,35 +186,51 @@
                 imageOverlay.style.display = 'flex';
                 imageOverlay.style.animation = 'slideIn 0.5s forwards';
             } else if (code === "ohayo") {
-                // Probabilidad para el personaje raro (1/500)
-                const isRare = Math.random() < 1 / 500;
-                
-                // Configurar el fondo de parque
-                imageOverlay.innerHTML = `<div class="park-background">
-                                            <img src="${isRare ? 'ohayor.png' : 'ohayo.png'}" alt="Personaje" class="character-img">
-                                          </div>`;
-                
-                // Mostrar el fondo y el personaje con la animación desde abajo
-                imageOverlay.style.display = 'flex';
-                imageOverlay.style.animation = 'slideIn 0.5s forwards';
+                // Generar número aleatorio entre 1 y 500 para determinar si aparece el personaje raro
+                const randomNum = Math.floor(Math.random() * 500) + 1;
         
-                // Reproducir el sonido "Ohayo"
-                let ohayoAudio = new Audio('ohayo.ogg');
-                ohayoAudio.play();
+                if (randomNum === 1) {
+                    // Personaje raro (probabilidad 1/500)
+                    imageOverlay.innerHTML = `
+                        <div class="ohayo-animation">
+                            <img src="park.jpg" class="background-image" alt="Fondo del parque">
+                            <img src="ohayor.png" class="character-image" alt="Personaje raro">
+                        </div>`;
+                    
+                    // Reproducir sonido raro y efecto adicional
+                    const audio1 = new Audio('ohayor.ogg');
+                    const audio2 = new Audio('ref.ogg');  // SFX de destellos
+                    audio1.play();
+                    audio2.play();
         
-                // Si es raro, reproducir un segundo sonido para los destellos
-                if (isRare) {
-                    let sparkleAudio = new Audio('ref.ogg');
-                    sparkleAudio.play();
+                } else {
+                    // Personaje normal
+                    imageOverlay.innerHTML = `
+                        <div class="ohayo-animation">
+                            <img src="park.jpg" class="background-image" alt="Fondo del parque">
+                            <img src="ohayo.png" class="character-image" alt="Personaje normal">
+                        </div>`;
+                    
+                    // Reproducir sonido normal
+                    const audio = new Audio('ohayo.ogg');
+                    audio.play();
                 }
         
-                // Al finalizar la animación, aplicar el difuminado
+                // Mostrar la animación y evitar interacción con el fondo
+                imageOverlay.style.display = 'flex';
+                imageOverlay.style.animation = 'slideInn 0.5s forwards';
+        
+                // Desactivar la interacción con el fondo
+                document.body.style.pointerEvents = 'none';
+        
+                // Difuminado después de la animación
                 setTimeout(() => {
                     imageOverlay.style.animation = 'fadeOut 1s forwards';
                     setTimeout(() => {
-                        imageOverlay.style.display = 'none'; // Ocultar la animación después de terminar
+                        imageOverlay.style.display = 'none';
+                        document.body.style.pointerEvents = 'auto'; // Reactivar la interacción con el fondo
                     }, 1000);
-                }, 3000); // Duración de la animación antes del difuminado (ajustable)
+                }, 5000); // La animación dura 5 segundos
             } else {
                 // Mostrar modal de código incorrecto
                 modalOverlay.style.display = 'flex';
