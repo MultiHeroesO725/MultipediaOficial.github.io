@@ -195,7 +195,7 @@
                 imageOverlay.innerHTML = '<img src="button.png" alt="Imagen especial" class="image-content">';
                 imageOverlay.style.display = 'flex';
                 imageOverlay.style.animation = 'slideIn 0.5s forwards';
-            } else if (code === "ohayo" || "buenos días" || "buenos dias" || "good morning") {
+            } else if (code === "ohayo" || code === "buenos días" || code === "buenos dias" || code === "good morning") {
                 // Generar probabilidad de 1/500
                 const isRef = Math.random() < (1 / 500);
         
