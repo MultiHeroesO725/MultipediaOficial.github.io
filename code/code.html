@@ -170,6 +170,10 @@
         <audio id="ohayoAudio"></audio>
     </div>
 
+    <div id="ramiOverlay" class="overlay">
+        <img id="ramiCharacter" src="" alt="Personaje" class="character-animation">
+    </div>
+
 
     <script>
         const submitBtn = document.getElementById('submitCode');
@@ -191,7 +195,7 @@
                 imageOverlay.innerHTML = '<img src="button.png" alt="Imagen especial" class="image-content">';
                 imageOverlay.style.display = 'flex';
                 imageOverlay.style.animation = 'slideIn 0.5s forwards';
-            } else if (code === "ohayo") {
+            } else if (code === "ohayo" || "buenos días" || "buenos dias" || "good morning") {
                 // Generar probabilidad de 1/500
                 const isRef = Math.random() < (1 / 500);
         
@@ -229,6 +233,43 @@
                         ohayoOverlay.style.display = 'none'; // Ocultar overlay
                         ohayoOverlay.classList.remove('fade-out');
                         ohayoCharacter.style.bottom = '-100%'; // Reiniciar posición del personaje
+                        document.body.style.pointerEvents = 'auto'; // Habilitar la interacción con el fondo
+                    }, 1000); // Duración del difuminado
+                }, 3000); // Duración total de la animación antes de difuminar
+            } else if (code === "Yo capaz que voy") {
+                // Generar probabilidad de 1/500
+                const isRef = Math.random() < (1 / 500);
+        
+                const ramiCharacter = document.getElementById('ramiCharacter');
+                const ramiOverlay = document.getElementById('ramiOverlay');
+        
+                // Deshabilitar la interacción con el fondo
+                document.body.style.pointerEvents = 'none';
+        
+                // Elegir imagen y sonido según si es raro o no
+                if (isRef) {
+                    ramiCharacter.src = 'ramir.png'; // Imagen rara
+                    const refSound = new Audio('ref.ogg'); // Sonido adicional de destellos
+                    refSound.play(); // Reproducir sonido raro adicional
+                } else {
+                    ramiCharacter.src = 'rami.png'; // Imagen normal
+                }
+        
+                // Mostrar overlay con animación
+                ramiOverlay.style.display = 'flex';
+        
+                // Mover personaje desde abajo
+                setTimeout(() => {
+                    ramiCharacter.style.bottom = '0';
+                }, 100);
+        
+                // Finalizar animación con difuminado
+                setTimeout(() => {
+                    ramiOverlay.classList.add('fade-out');
+                    setTimeout(() => {
+                        ramiOverlay.style.display = 'none'; // Ocultar overlay
+                        ramiOverlay.classList.remove('fade-out');
+                        ramiCharacter.style.bottom = '-100%'; // Reiniciar posición del personaje
                         document.body.style.pointerEvents = 'auto'; // Habilitar la interacción con el fondo
                     }, 1000); // Duración del difuminado
                 }, 3000); // Duración total de la animación antes de difuminar
