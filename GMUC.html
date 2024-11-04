@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página de Universo</title>
+    <title>Lista de Personajes</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-      * {
+        * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -14,108 +14,65 @@
     
     body {
         font-family: Arial, sans-serif;
-        color: #fff;
-        background: linear-gradient(to bottom, #222 0%, #fff 100%);
-        overflow-x: hidden;
-        scroll-behavior: smooth;
-    }
-    
-    .banner {
-        width: 100%;
-        padding: 60px 0;
-        text-align: center;
-        background: #222;
-        color: #fff;
-    }
-    
-    .banner h1 {
-        font-size: 3rem;
-        margin: 0;
-        font-weight: bold;
-    }
-    
-    .characters-container {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 15px;
-        padding: 20px;
-        width: 80%;
-        margin: 20px auto;
-        background: rgba(255, 255, 255, 0.1);
+        background-color: #fff;
+        color: #000;
     }
     
     .character-card {
         position: relative;
-        background: #111;
+        width: 33.33%; /* Tres en una fila en pantallas grandes */
+        padding-top: 20%; /* Relación de aspecto cuadrada */
+        background-size: cover;
+        background-position: center;
+        float: left; /* Permite que se alineen uno al lado del otro sin contenedor */
         color: #fff;
+    }
+    
+    .character-info {
+        position: absolute;
+        top: 0;
+        left: 0;
         padding: 10px;
-        text-align: center;
-        border-radius: 8px;
-        transition: background 0.3s ease;
-    }
-    
-    .character-card:hover {
-        background: #444;
-    }
-    
-    .character-number {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.5rem;
-        color: #aaa;
-    }
-    
-    .character-number span {
-        margin-right: 8px;
-    }
-    
-    .character-number img {
-        width: 25px;
-        height: 25px;
-    }
-    
-    .character-image {
-        width: 100%;
-        height: auto;
-        border-radius: 5px;
-        margin-top: 10px;
-    }
-    
-    .character-name {
         font-size: 1.2rem;
         font-weight: bold;
-        margin-top: 8px;
+        background: rgba(0, 0, 0, 0.6); /* Fondo oscuro para hacer que el texto sea legible */
+    }
+    
+    @media (max-width: 768px) {
+        .character-card {
+            width: 100%; /* En dispositivos móviles, ocupa toda la pantalla */
+            padding-top: 60%; /* Relación de aspecto para pantallas pequeñas */
+        }
     }
 
     </style>
 </head>
 <body>
-    <div class="banner">
-        <h1>Universo de Personajes</h1>
+    <!-- Cada personaje en un bloque con imagen de fondo y texto -->
+    <div class="character-card" style="background-image: url('GMUC/000.png');">
+        <p class="character-info">01 Mario</p>
     </div>
 
-    <div class="characters-container">
-        <div class="character-card">
-            <div class="character-number">
-                <span>01</span>
-                <img src="GMUC/icon.png" alt="Icono">
-            </div>
-            <img src="img/personaje1.png" alt="Personaje 1" class="character-image">
-            <p class="character-name">Mario</p>
-        </div>
-        
-        <!-- Repite este bloque para cada personaje -->
-        <div class="character-card">
-            <div class="character-number">
-                <span>02</span>
-                <img src="GMUC/icon.png" alt="Icono">
-            </div>
-            <img src="img/personaje2.png" alt="Personaje 2" class="character-image">
-            <p class="character-name">Donkey Kong</p>
-        </div>
-
-        <!-- Agrega más personajes en bloques similares -->
+    <div class="character-card" style="background-image: url('GMUC/000.png');">
+        <p class="character-info">02 Donkey Kong</p>
     </div>
+
+    <div class="character-card" style="background-image: url('GMUC/000.png');">
+        <p class="character-info">03 Link</p>
+    </div>
+
+    <div class="character-card" style="background-image: url('GMUC/000.png');">
+        <p class="character-info">01 Mario</p>
+    </div>
+
+    <div class="character-card" style="background-image: url('GMUC/000.png');">
+        <p class="character-info">02 Donkey Kong</p>
+    </div>
+
+    <div class="character-card" style="background-image: url('GMUC/000.png');">
+        <p class="character-info">03 Link</p>
+    </div>
+
+    <!-- Añade más personajes aquí con el mismo formato -->
 </body>
 </html>
