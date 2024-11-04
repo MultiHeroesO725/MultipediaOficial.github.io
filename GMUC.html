@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Personajes</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Super Smash Bros Ultimate</title>
     <style>
         * {
     margin: 0;
@@ -14,65 +13,117 @@
     
     body {
         font-family: Arial, sans-serif;
-        background-color: #fff;
-        color: #000;
+        background-color: white;
+    }
+    
+    .header {
+        height: 100vh;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .background-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    
+    header::after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to bottom, rgba(255, 255, 255, 0), white 100%);
+    }
+    
+    .character-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        padding: 50px;
     }
     
     .character-card {
         position: relative;
-        width: 33.33%; /* Tres en una fila en pantallas grandes */
-        padding-top: 20%; /* Relación de aspecto cuadrada */
+        text-align: center;
+        color: white;
+    }
+    
+    .character-image {
+        width: 100%;
+        padding-bottom: 100%; /* Relación de aspecto cuadrada */
         background-size: cover;
         background-position: center;
-        float: left; /* Permite que se alineen uno al lado del otro sin contenedor */
-        color: #fff;
+        border-radius: 10px;
+        position: relative;
     }
     
     .character-info {
         position: absolute;
-        top: 0;
+        bottom: 10px;
         left: 0;
+        width: 100%;
+        text-align: center;
+        font-size: 1.5em;
+        background: rgba(0, 0, 0, 0.5);
         padding: 10px;
-        font-size: 1.2rem;
-        font-weight: bold;
-        background: rgba(0, 0, 0, 0.6); /* Fondo oscuro para hacer que el texto sea legible */
-    }
-    
-    @media (max-width: 768px) {
-        .character-card {
-            width: 100%; /* En dispositivos móviles, ocupa toda la pantalla */
-            padding-top: 60%; /* Relación de aspecto para pantallas pequeñas */
-        }
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
     }
 
     </style>
 </head>
 <body>
-    <!-- Cada personaje en un bloque con imagen de fondo y texto -->
-    <div class="character-card" style="background-image: url('GMUC/000.png');">
-        <p class="character-info">01 Mario</p>
+    <!-- Sección del fondo grande -->
+    <div class="header">
+        <img src="GMUC/bg.png" alt="Imagen de GMU" class="background-image">
     </div>
-
-    <div class="character-card" style="background-image: url('GMUC/000.png');">
-        <p class="character-info">02 Donkey Kong</p>
-    </div>
-
-    <div class="character-card" style="background-image: url('GMUC/000.png');">
-        <p class="character-info">03 Link</p>
-    </div>
-
-    <div class="character-card" style="background-image: url('GMUC/000.png');">
-        <p class="character-info">01 Mario</p>
-    </div>
-
-    <div class="character-card" style="background-image: url('GMUC/000.png');">
-        <p class="character-info">02 Donkey Kong</p>
-    </div>
-
-    <div class="character-card" style="background-image: url('GMUC/000.png');">
-        <p class="character-info">03 Link</p>
-    </div>
-
-    <!-- Añade más personajes aquí con el mismo formato -->
+    
+    <!-- Lista de personajes -->
+    <section class="character-grid">
+        <div class="character-card">
+            <div class="character-image" style="background-image: url('GMUC/character.png');"></div>
+            <div class="character-info">
+                <p>01 Kirochy</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <div class="character-image" style="background-image: url('GMUC/character.png');"></div>
+            <div class="character-info">
+                <p>02 Sacne</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <div class="character-image" style="background-image: url('GMUC/character.png');"></div>
+            <div class="character-info">
+                <p>01 Kirochy</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <div class="character-image" style="background-image: url('GMUC/character.png');"></div>
+            <div class="character-info">
+                <p>01 Kirochy</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <div class="character-image" style="background-image: url('GMUC/character.png');"></div>
+            <div class="character-info">
+                <p>01 Kirochy</p>
+            </div>
+        </div>
+        <div class="character-card">
+            <div class="character-image" style="background-image: url('GMUC/character.png');"></div>
+            <div class="character-info">
+                <p>01 Kirochy</p>
+            </div>
+        </div>
+        <!-- Repetir para cada personaje -->
+    </section>
 </body>
 </html>
