@@ -64,24 +64,16 @@
             display: block; /* Hacer que el enlace abarque todo el cuadro */
         }
 
-        /* Estilos responsive: ajuste para dispositivos móviles */
-        @media (max-width: 1024px) {
-            .character-grid {
-                grid-template-columns: repeat(2, 1fr); /* 2 columnas en tablets */
-            }
-        }
-
+        /* Adaptación para móviles - 1 columna */
         @media (max-width: 768px) {
             .character-grid {
-                grid-template-columns: 1fr; /* 1 columna en móviles */
+                grid-template-columns: 1fr; /* 1 columna que ocupa todo el ancho disponible */
+                padding: 20px;
             }
 
             .character-card {
-                height: 80px; /* Ajustamos la altura para que se vea bien en pantallas pequeñas */
-            }
-
-            .header {
-                height: 60vh; /* Reducir el tamaño de la imagen principal en móviles */
+                width: 100%; /* El cuadro ahora ocupa el 100% del ancho */
+                max-width: 100%; /* Asegura que no sobrepase el ancho del contenedor */
             }
         }
     </style>
