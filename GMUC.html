@@ -82,12 +82,20 @@
             bottom: -100%; /* Fuera de la pantalla al inicio */
             left: 50%;
             transform: translateX(-50%);
-            width: 80vw;
-            max-width: 500px;
+            width: auto;
             height: auto;
-            background-color: white;
+            max-width: 80vw;
+            max-height: 80vh;
             padding: 10px;
             transition: bottom 0.3s ease-in-out; /* Animación de salida desde abajo */
+        }
+
+        /* Asegura que la imagen tenga fondo transparente y centrada */
+        .modal-content img {
+            display: block;
+            width: 100%;
+            height: auto;
+            object-fit: contain; /* Mantiene la proporción de la imagen */
         }
 
         /* Ajustes para pantallas pequeñas (móviles) */
@@ -310,7 +318,7 @@
     <!-- Modal (pantalla oscurecida y ventana emergente) -->
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal-content" id="modalContent">
-            <img src="" alt="Personaje" id="modalImage" style="width: 100%;">
+            <img src="" alt="Personaje" id="modalImage">
         </div>
     </div>
 
@@ -324,7 +332,7 @@
         // Añadir evento de clic a cada personaje
         characterCards.forEach(card => {
             card.addEventListener('click', () => {
-                const imgSrc = card.getAttribute('data-img'); // Obtener ruta de la imagen grande
+                const imgSrc = card.getAttribute('data-img'); // Obtener ruta de la imagen grande con fondo transparente
                 modalImage.src = imgSrc; // Cambiar la imagen del modal
                 modalOverlay.style.display = 'flex'; // Mostrar el modal
                 setTimeout(() => {
