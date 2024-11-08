@@ -64,6 +64,32 @@
             display: block; /* Hacer que el enlace abarque todo el cuadro */
         }
 
+        /* Modal (pantalla oscurecida y ventana emergente) */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.7); /* Pantalla oscurecida */
+            display: none; /* Oculto por defecto */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            position: fixed;
+            bottom: -100%; /* Fuera de la pantalla al inicio */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80vw;
+            max-width: 500px;
+            height: auto;
+            background-color: white;
+            padding: 10px;
+            transition: bottom 0.3s ease-in-out; /* Animación de salida desde abajo */
+        }
+
         /* Ajustes para pantallas pequeñas (móviles) */
         @media (max-width: 1200px) {
             .character-grid {
@@ -98,39 +124,39 @@
     <section class="character-grid">
     <!--<div class="character-card" style="background-image: url('GMUC/.png');"></div>-->
 
-        <div class="character-card" style="background-image: url('GMUC/001.png');" data-img="GMUC/001.png"></div>
-        <div class="character-card" style="background-image: url('GMUC/002.png');" data-img="GMUC/002.png"></div>
-        <div class="character-card" style="background-image: url('GMUC/003.png');" data-img="GMUC/003.png"></div>
+        <div class="character-card" style="background-image: url('GMUC/001.png');" data-img="GMUC/c001.png"></div>
+        <div class="character-card" style="background-image: url('GMUC/002.png');" data-img="GMUC/c002.png"></div>
+        <div class="character-card" style="background-image: url('GMUC/003.png');" data-img="GMUC/c003.png"></div>
         
-        <div class="character-card" style="background-image: url('GMUC/004.png');" data-img="GMUC/004.png"></div>
-        <div class="character-card" style="background-image: url('GMUC/005.png');" data-img="GMUC/005.png"></div>
-        <div class="character-card" style="background-image: url('GMUC/006.png');" data-img="GMUC/006.png"></div>
+        <div class="character-card" style="background-image: url('GMUC/004.png');" data-img="GMUC/c004.png"></div>
+        <div class="character-card" style="background-image: url('GMUC/005.png');" data-img="GMUC/c005.png"></div>
+        <div class="character-card" style="background-image: url('GMUC/006.png');" data-img="GMUC/c006.png"></div>
 
-        <div class="character-card" style="background-image: url('GMUC/007.png');" data-img="GMUC/007.png"></div>
-        <div class="character-card" style="background-image: url('GMUC/008.png');" data-img="GMUC/008.png"></div>
-        <div class="character-card" style="background-image: url('GMUC/009.png');" data-img="GMUC/009.png"></div>
+        <div class="character-card" style="background-image: url('GMUC/007.png');" data-img="GMUC/c007.png"></div>
+        <div class="character-card" style="background-image: url('GMUC/008.png');" data-img="GMUC/c008.png"></div>
+        <div class="character-card" style="background-image: url('GMUC/009.png');" data-img="GMUC/c009.png"></div>
 
-        <div class="character-card" style="background-image: url('GMUC/010.png');" data-img="GMUC/010.png"></div>
-        <div class="character-card" style="background-image: url('GMUC/011.png');" data-img="GMUC/011.png"></div>
-        <div class="character-card" style="background-image: url('GMUC/012.png');" data-img="GMUC/012.png"></div>
+        <div class="character-card" style="background-image: url('GMUC/010.png');" data-img="GMUC/c010.png"></div>
+        <div class="character-card" style="background-image: url('GMUC/011.png');" data-img="GMUC/c011.png"></div>
+        <div class="character-card" style="background-image: url('GMUC/012.png');" data-img="GMUC/c012.png"></div>
 
-        <div class="character-card" style="background-image: url('GMUC/013.png');" data-img="GMUC/013.png"></div>
-        <div class="character-card" style="background-image: url('GMUC/014.png');" data-img="GMUC/014.png"></div>
-        <div class="character-card" style="background-image: url('GMUC/015.png');" data-img="GMUC/015.png"></div>
+        <div class="character-card" style="background-image: url('GMUC/013.png');" data-img="GMUC/c013.png"></div>
+        <div class="character-card" style="background-image: url('GMUC/014.png');" data-img="GMUC/c014.png"></div>
+        <div class="character-card" style="background-image: url('GMUC/015.png');" data-img="GMUC/c015.png"></div>
 
-        <div class="character-card" style="background-image: url('GMUC/016.png');" data-img="GMUC/016.png"></div>
-        <div class="character-card" style="background-image: url('GMUC/017.png');" data-img="GMUC/017.png"></div>
-        <div class="character-card" style="background-image: url('GMUC/018.png');" data-img="GMUC/018.png"></div>
+        <div class="character-card" style="background-image: url('GMUC/016.png');" data-img="GMUC/c016.png"></div>
+        <div class="character-card" style="background-image: url('GMUC/017.png');" data-img="GMUC/c017.png"></div>
+        <div class="character-card" style="background-image: url('GMUC/018.png');" data-img="GMUC/c018.png"></div>
 
-        <div class="character-card" style="background-image: url('GMUC/019.png');" data-img="GMUC/019.png"></div>
-        <div class="character-card" style="background-image: url('GMUC/020.png');" data-img="GMUC/020.png"></div>
-        <div class="character-card" style="background-image: url('GMUC/021.png');" data-img="GMUC/021.png"></div>
+        <div class="character-card" style="background-image: url('GMUC/019.png');" data-img="GMUC/c019.png"></div>
+        <div class="character-card" style="background-image: url('GMUC/020.png');" data-img="GMUC/c020.png"></div>
+        <div class="character-card" style="background-image: url('GMUC/021.png');" data-img="GMUC/c021.png"></div>
 
-        <div class="character-card" style="background-image: url('GMUC/022.png');" data-img="GMUC/022.png"></div>
-        <div class="character-card" style="background-image: url('GMUC/023.png');" data-img="GMUC/023.png"></div>
-        <div class="character-card" style="background-image: url('GMUC/024.png');" data-img="GMUC/024.png"></div>
+        <div class="character-card" style="background-image: url('GMUC/022.png');" data-img="GMUC/c022.png"></div>
+        <div class="character-card" style="background-image: url('GMUC/023.png');" data-img="GMUC/c023.png"></div>
+        <div class="character-card" style="background-image: url('GMUC/024.png');" data-img="GMUC/c024.png"></div>
 
-        <div class="character-card" style="background-image: url('GMUC/025.png');" data-img="GMUC/025.png"></div>
+        <div class="character-card" style="background-image: url('GMUC/025.png');" data-img="GMUC/c025.png"></div>
         <div class="character-card" style="background-image: url('GMUC/000.png');"></div>
         <div class="character-card" style="background-image: url('GMUC/000.png');"></div>
 
@@ -140,11 +166,7 @@
 
         <div class="character-card" style="background-image: url('GMUC/000.png');"></div>
         <div class="character-card" style="background-image: url('GMUC/000.png');"></div>
-        <div class="character-card" style="background-image: url('GMUC/033.png');" data-img="GMUC/033.png"></div>
-
-        <div class="character-card" style="background-image: url('GMUC/000.png');"></div>
-        <div class="character-card" style="background-image: url('GMUC/000.png');"></div>
-        <div class="character-card" style="background-image: url('GMUC/000.png');"></div>
+        <div class="character-card" style="background-image: url('GMUC/033.png');" data-img="GMUC/c033.png"></div>
 
         <div class="character-card" style="background-image: url('GMUC/000.png');"></div>
         <div class="character-card" style="background-image: url('GMUC/000.png');"></div>
@@ -172,13 +194,17 @@
 
         <div class="character-card" style="background-image: url('GMUC/000.png');"></div>
         <div class="character-card" style="background-image: url('GMUC/000.png');"></div>
-        <div class="character-card" style="background-image: url('GMUC/054.png');" data-img="GMUC/054.png"></div>
+        <div class="character-card" style="background-image: url('GMUC/000.png');"></div>
 
-        <div class="character-card" style="background-image: url('GMUC/055.png');" data-img="GMUC/055.png"></div>
-        <div class="character-card" style="background-image: url('GMUC/056.png');" data-img="GMUC/056.png"></div>
-        <div class="character-card" style="background-image: url('GMUC/057.png');" data-img="GMUC/057.png"></div>
+        <div class="character-card" style="background-image: url('GMUC/000.png');"></div>
+        <div class="character-card" style="background-image: url('GMUC/000.png');"></div>
+        <div class="character-card" style="background-image: url('GMUC/054.png');" data-img="GMUC/c054.png"></div>
 
-        <div class="character-card" style="background-image: url('GMUC/058.png');" data-img="GMUC/058.png"></div>
+        <div class="character-card" style="background-image: url('GMUC/055.png');" data-img="GMUC/c055.png"></div>
+        <div class="character-card" style="background-image: url('GMUC/056.png');" data-img="GMUC/c056.png"></div>
+        <div class="character-card" style="background-image: url('GMUC/057.png');" data-img="GMUC/c057.png"></div>
+
+        <div class="character-card" style="background-image: url('GMUC/058.png');" data-img="GMUC/c058.png"></div>
         <div class="character-card" style="background-image: url('GMUC/000.png');"></div>
         <div class="character-card" style="background-image: url('GMUC/000.png');"></div>
 
