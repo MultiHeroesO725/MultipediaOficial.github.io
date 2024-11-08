@@ -80,7 +80,7 @@
         .modal-content {
             position: fixed;
             bottom: -100%; /* Fuera de la pantalla al inicio */
-            left: 50%;
+            left: 46%;
             transform: translateX(-50%);
             width: auto;
             height: auto;
@@ -93,7 +93,7 @@
         /* Asegura que la imagen tenga fondo transparente y centrada */
         .modal-content img {
             display: block;
-            width: 100%;
+            width: 120%;
             height: auto;
             object-fit: contain; /* Mantiene la proporción de la imagen */
         }
@@ -336,7 +336,7 @@
                 modalImage.src = imgSrc; // Cambiar la imagen del modal
                 modalOverlay.style.display = 'flex'; // Mostrar el modal
                 setTimeout(() => {
-                    modalContent.style.bottom = '0'; // Hacer que la imagen suba
+                    modalContent.style.bottom = '17%'; // Hacer que la imagen suba
                 }, 10);
             });
         });
