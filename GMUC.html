@@ -67,13 +67,23 @@
         /* Ajustes para pantallas pequeñas (móviles) */
         @media (max-width: 1200px) {
             .character-grid {
-                grid-template-columns: repeat(3, 30vw); /* 3 columnas, cada una ocupa 30% del ancho de la pantalla */
+                grid-template-columns: repeat(3, 30vw); /* 3 columnas de 30vw para móviles */
                 padding: 20px;
             }
 
             .character-card {
                 width: 30vw; /* Cada cuadro tiene 30% del ancho de la pantalla */
-                height: calc(30vw / 389 * 94); /* Mantener la proporción de la imagen (ancho:alto) */
+                height: calc(30vw / 389 * 94); /* Mantener la proporción de la imagen */
+            }
+
+            .header {
+                height: 50vh; /* Reducir altura del fondo en pantallas pequeñas */
+            }
+
+            .background-image {
+                width: 100%; /* Asegura que la imagen de fondo cubra el ancho */
+                height: 100%; /* Asegura que cubra el alto del contenedor */
+                object-fit: cover; /* Cubrir completamente el espacio sin deformarse */
             }
         }
     </style>
