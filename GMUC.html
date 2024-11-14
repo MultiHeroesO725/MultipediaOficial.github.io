@@ -57,14 +57,10 @@
             height: 94px;
             background-size: cover;
             background-position: center;
+            cursor: pointer;
         }
 
-        a {
-            text-decoration: none; /* Sin subrayado */
-            display: block; /* Hacer que el enlace abarque todo el cuadro */
-        }
-
-        /* Modal (pantalla oscurecida y ventana emergente) */
+        /* Modal (pantalla oscurecida y ventana emergente centrada) */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -75,38 +71,31 @@
             display: none; /* Oculto por defecto */
             justify-content: center;
             align-items: center;
+            z-index: 1000; /* Asegurar que el modal esté por encima de todo */
         }
 
         .modal-content {
-            position: fixed;
-            bottom: -100%; /* Fuera de la pantalla al inicio */
-            left: 46%;
-            transform: translateX(-50%);
-            width: auto;
-            height: auto;
-            max-width: 80vw;
-            max-height: 80vh;
-            padding: 10px;
-            transition: bottom 0.3s ease-in-out; /* Animación de salida desde abajo */
+            background-color: transparent; /* Fondo transparente */
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        /* Asegura que la imagen tenga fondo transparente y centrada */
         .modal-content img {
-            display: block;
-            width: 120%;
-            height: auto;
-            object-fit: contain; /* Mantiene la proporción de la imagen */
+            max-width: 80vw; /* Limitar el ancho en pantallas grandes */
+            max-height: 80vh; /* Limitar la altura para que no sobresalga */
+            object-fit: contain; /* Asegurarse de que la imagen mantenga su proporción */
         }
 
         /* Ajustes para pantallas pequeñas (móviles) */
         @media (max-width: 1200px) {
             .character-grid {
-                grid-template-columns: repeat(3, 30vw); /* 3 columnas de 30vw para móviles */
+                grid-template-columns: repeat(3, 30vw); /* 3 columnas para móviles */
                 padding: 20px;
             }
 
             .character-card {
-                width: 30vw; /* Cada cuadro tiene 30% del ancho de la pantalla */
+                width: 30vw;
                 height: calc(30vw / 389 * 94); /* Mantener la proporción de la imagen */
             }
 
@@ -115,9 +104,9 @@
             }
 
             .background-image {
-                width: 100%; /* Asegura que la imagen de fondo cubra el ancho */
-                height: 100%; /* Asegura que cubra el alto del contenedor */
-                object-fit: cover; /* Cubrir completamente el espacio sin deformarse */
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
             }
         }
     </style>
