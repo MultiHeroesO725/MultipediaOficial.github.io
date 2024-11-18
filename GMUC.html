@@ -321,21 +321,17 @@
         // Añadir evento de clic a cada personaje
         characterCards.forEach(card => {
             card.addEventListener('click', () => {
-                const imgSrc = card.getAttribute('data-img'); // Obtener ruta de la imagen grande con fondo transparente
+                const imgSrc = card.getAttribute('data-img'); // Obtener ruta de la imagen grande
                 modalImage.src = imgSrc; // Cambiar la imagen del modal
                 modalOverlay.style.display = 'flex'; // Mostrar el modal
-                setTimeout(() => {
-                    modalContent.style.bottom = '17%'; // Hacer que la imagen suba
-                }, 10);
+                document.body.style.overflow = 'hidden'; // Evitar scroll en el fondo
             });
         });
 
         // Cerrar el modal al hacer clic en cualquier parte de la pantalla
         modalOverlay.addEventListener('click', () => {
-            modalContent.style.bottom = '-100%'; // Hacer que la imagen baje
-            setTimeout(() => {
-                modalOverlay.style.display = 'none'; // Ocultar el modal después de la animación
-            }, 300); // Esperar a que termine la animación
+            modalOverlay.style.display = 'none'; // Ocultar el modal
+            document.body.style.overflow = 'auto'; // Restaurar el scroll
         });
     </script>
     
