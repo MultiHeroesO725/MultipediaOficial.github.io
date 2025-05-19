@@ -19,10 +19,12 @@
             
             if (forma == 'n') {
                 info.innerHTML = 'Líder de las Leyendas Supremas, el primer grupo formado en la Escuela de Héroes. Controla el Elemento Supremo "Emociones", estando al nivel de una deidad, o incluso más.';
+                apar.innerHTML = 'Apariciones Oficiales<br><br>- ??? -'
                 code.value = 'No Disponible';
                 codeR.value = 'No Disponible';
             } else if (forma == 'b') {
                 info.innerHTML = 'Simplemente, una pequeña del Jardín de Niños de TruntuLand...';
+                apar.innerHTML = 'Apariciones Oficiales<br><br>- Origenes -'
                 code.value = 'No disponible';
                 codeR.value = 'No disponible';
             }
@@ -80,11 +82,8 @@
     <div class="character-info" id="info-personaje">
         <p>Líder de las Leyendas Supremas, el primer grupo formado en la Escuela de Héroes. Controla el Elemento Supremo "Emociones", estando al nivel de una deidad, o incluso más.</p>
     </div>
-    <div class="character-info">
-        <p>♫ VS Leyendas Supremas</p>
-            <audio controls loop>
-                <source src="008_9_10_11.mp3" type="audio/mpeg">
-                Tu navegador no soporta el elemento de audio.
+    <div class="character-info" id="apar">
+        <p>Apariciones Oficiales<br><br>- ??? -</p>
     </div>
     <div class="character-item">
         <a href="007.html">Anterior: N.°007 Maestra</a>
